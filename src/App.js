@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
+import './App.css';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='app-wrapper'>
+      <header className='header'>
+        <img src='https://cdn.logo.com/hotlink-ok/logo-social-sq.png' alt='logo' />
       </header>
+      <nav className='nav'>
+        <div>Profile</div>
+        <div>Messages</div>
+        <div>News</div>
+        <div>Music</div>
+        <div>Settings</div>
+      </nav>
+      <div className='content'>
+        <div>
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/6/6c/Herjangsfjorden_%26_Ofotfjorden%2C_wide%2C_2009_09.jpg'
+            alt='wide_image'
+          />
+        </div>
+        <div>{/* <p>Main Content</p> */}</div>
+        <div className='avatar_image'>
+          <img
+            src='https://p7.hiclipart.com/preview/7/618/505/avatar-icon-fashion-men-vector-avatar.jpg'
+            alt='avatar_image'
+          />
+          <div className='profile_info'>Ava + description</div>
+          <div>My Posts</div>
+          <div>New Post</div>
+          <div>
+            <div>Post 1</div>
+            <div>Post 2</div>
+            <div>Post 3</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
