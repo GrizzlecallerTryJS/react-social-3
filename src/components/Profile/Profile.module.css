@@ -1,27 +1,3 @@
-.app-wrapper {
-  display: grid;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 1fr 10fr;
-  grid-gap: 10px;
-  grid-template-areas: "h h" "n c";
-  margin: 0 150px 0;
-}
-
-.header {
-  grid-area: h;
-  border: 1px solid #000;
-  background-color: #b9d9db;
-}
-.header img {
-  width: 50px;
-}
-
-.nav {
-  grid-area: n;
-  border: 1px solid #000;
-  background-color: #a0b49c;
-}
-
 .content {
   display: grid;
   grid-area: c;
@@ -56,4 +32,8 @@
 
 .post_area_block {
   grid-area: post_area_block;
+}
+
+.item {
+  color: #212428;
 }
