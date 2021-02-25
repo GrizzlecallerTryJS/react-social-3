@@ -7,13 +7,21 @@ const Navbar = () => {
   return (
     <nav className={style.nav}>
       <div className={style.items}>
-        <div>Profile</div>
         <div>
-          <MessagesComponent />
+          <a href="/profile">Profile</a>
         </div>
-        <div>News</div>
-        <div>Music</div>
-        <div>Settings</div>
+        <div>
+          <a href="/messages">Messages</a>
+        </div>
+        <div>
+          <a href="/news">News</a>
+        </div>
+        <div>
+          <a href="/music">Music</a>
+        </div>
+        <div>
+          <a href="/settings">Settings</a>
+        </div>
       </div>
     </nav>
   );
