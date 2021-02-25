@@ -5,7 +5,8 @@
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  grid-template-areas: "wide_pic wide_pic" "avatar_and_info_block avatar_and_info_block"
+  grid-template-areas:
+    "wide_pic wide_pic" "avatar_and_info_block avatar_and_info_block"
     "post_area_block post_area_block";
   background-color: #efedda;
 }
@@ -28,12 +29,4 @@
 .profile_info {
   grid-area: profile_info;
   border: 1px solid #000;
-}
-
-.post_area_block {
-  grid-area: post_area_block;
-}
-
-.item {
-  color: #212428;
 }
