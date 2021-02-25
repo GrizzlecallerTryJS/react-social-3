@@ -6,3 +6,7 @@
   grid-template-areas: "h h" "n c";
   margin: 0 150px 0;
 }
+
+.dialog_style {
+  background-color: #efedda;
+}
