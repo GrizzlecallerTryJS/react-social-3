@@ -20,7 +20,7 @@ const App = () => {
         <DialogsComponent />
       </div>*/}
       <Route path="/profile" component={Profile} />
-      <Route path="/messages" component={MessagesComponent} />
+      <Route exact path="/messages" component={MessagesComponent} />
       <Route path="/news" component={NewsComponent} />
       <Route path="/music" component={MusicComponent} />
       <Route path="/settings" component={SettingsComponent} />
