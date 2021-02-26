@@ -4,7 +4,6 @@ import style from "./App.module.css";
 import Profile from "./components/Profile/Profile";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import DialogsComponent from "./components/Navbar/Messages/Dialogs/DialogsComponent";
 import { Route } from "react-router-dom";
 import MessagesComponent from "./components/Navbar/Messages/MessagesComponent";
 import NewsComponent from "./components/Navbar/News/NewsComponent";
