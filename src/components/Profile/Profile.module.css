@@ -1,4 +1,4 @@
-.content {
+/*.content {
   display: grid;
   grid-area: c;
   border: 1px solid #000;
@@ -9,24 +9,20 @@
     "wide_pic wide_pic" "avatar_and_info_block avatar_and_info_block"
     "post_area_block post_area_block";
   background-color: #efedda;
+}*/
+
+.content {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas: "p" "m";
+  grid-gap: 10px;
+  background-color: #efedda;
 }
 
-.avatar_and_info_block {
-  grid-area: avatar_and_info_block;
+.profileInfo {
+  grid-area: p;
 }
 
-.content img {
-  grid-area: wide_pic;
-  width: 1000px;
-}
-
-.avatar_image img {
-  grid-area: avatar_pic;
-  width: 150px;
-  border: 1px solid #000;
-}
-
-.profile_info {
-  grid-area: profile_info;
-  border: 1px solid #000;
+.myPosts {
+  grid-area: m;
 }

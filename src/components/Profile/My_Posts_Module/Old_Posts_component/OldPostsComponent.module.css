@@ -1,11 +1,12 @@
 .main {
   display: grid;
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 50px 1fr;
   grid-template-areas: "item message";
   border: 1px solid #000000;
 }
 
 .item {
+  grid-area: item;
   color: #212428;
 }
 

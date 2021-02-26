@@ -1,0 +1,29 @@
+.main {
+  display: grid;
+  grid-area: c;
+  border: 1px solid #000;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas: "wide_pic wide_pic" "avatar_and_info_block avatar_and_info_block";
+}
+
+.avatar_and_info_block {
+  grid-area: avatar_and_info_block;
+}
+
+.wideImage img {
+  grid-area: wide_pic;
+  width: 1000px;
+}
+
+.avatar_image img {
+  grid-area: avatar_pic;
+  width: 150px;
+  border: 1px solid #000;
+}
+
+.profile_info {
+  grid-area: profile_info;
+  border: 1px solid #000;
+}

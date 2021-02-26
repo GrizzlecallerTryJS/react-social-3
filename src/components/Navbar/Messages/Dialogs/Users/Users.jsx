@@ -2,23 +2,26 @@ import React from "react";
 import style from "./Users.module.css";
 import { NavLink } from "react-router-dom";
 
-const Users = () => {
+let items = [
+  { id: 1, name: "Dima" },
+  { id: 2, name: "Yana" },
+  { id: 3, name: "Marina" },
+  { id: 4, name: "Sasha" },
+];
+
+let DialogItem = (props) => {
+  let path = `/messages/${props.id}`;
   return (
-    <div className={style.name}>
-      <div>
-        <NavLink to="/messages/dima">Dima</NavLink>
-      </div>
-      <div>
-        <NavLink to="/messages/yana">Yana</NavLink>
-      </div>
-      <div>
-        <NavLink to="/messages/marina">Marina</NavLink>
-      </div>
-      <div>
-        <NavLink to="/messages/sasha">Sasha</NavLink>
-      </div>
+    <div>
+      <NavLink to={path}>{props.name}</NavLink>
     </div>
   );
+};
+
+const Users = () => {
+  return items.map((i) => {
+    return <DialogItem id={i.id} name={i.name} key={i.id} />;
+  });
 };
 
 export default Users;
