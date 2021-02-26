@@ -2,7 +2,27 @@ import React from "react";
 import style from "./OldPostsComponent.module.css";
 import defaultImage from "./../../../../assets/images/defaultImage.png";
 
+let posts = [
+  { id: 1, message: "BEEP", image: defaultImage },
+  { id: 2, message: "BOOP", image: defaultImage },
+];
+
 const OldPostsComponent = (props) => {
+  return (
+    /*<div className={style.main}>
+      <div className={style.item}>
+        <img src={defaultImage} alt="defaultImage" />
+      </div>
+      <div className={style.message}>{props.message}</div>
+    </div>
+  );*/
+    posts.map((p) => {
+      return <Post id={p.id} message={p.message} image={p.image} key={p.id} />;
+    })
+  );
+};
+
+const Post = (props) => {
   return (
     <div className={style.main}>
       <div className={style.item}>

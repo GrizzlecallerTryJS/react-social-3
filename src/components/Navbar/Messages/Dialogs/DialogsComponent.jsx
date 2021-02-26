@@ -6,8 +6,12 @@ import Messages from "./Messages/Messages";
 const DialogsComponent = () => {
   return (
     <div className={style.main}>
-      <Users />
-      <Messages />
+      <div className={style.name}>
+        <Users />
+      </div>
+      <div className={style.message}>
+        <Messages />
+      </div>
     </div>
   );
 };

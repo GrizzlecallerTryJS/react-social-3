@@ -9,10 +9,7 @@ const MyPostsComponent = () => {
       <div>My Posts</div>
       <NewPostComponent />
       <div>
-        <OldPostsComponent message={"beep"} />
-      </div>
-      <div>
-        <OldPostsComponent message={"boop"} />
+        <OldPostsComponent />
       </div>
     </div>
   );

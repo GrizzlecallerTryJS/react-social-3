@@ -6,3 +6,15 @@
   padding: 20px;
   border: 1px solid #000000;
 }
+
+.name {
+  grid-area: name;
+  padding: 10px;
+  border: 1px solid #000000;
+}
+
+.message {
+  grid-area: message;
+  padding: 10px;
+  border: 1px solid #000000;
+}

@@ -1,8 +1,12 @@
 .main {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-areas: "item message";
   border: 1px solid #000000;
 }
 
 .item {
+  grid-area: item;
   color: #212428;
 }
 
@@ -11,5 +15,6 @@
   border: 1px solid #a0b49c;
 }
 .message {
+  grid-area: message;
   border: 1px solid #a0b49c;
 }
