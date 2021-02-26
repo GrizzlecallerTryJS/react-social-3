@@ -11,6 +11,7 @@
 }
 
 .item img {
+  grid-area: item;
   width: 50px;
   border: 1px solid #a0b49c;
 }
