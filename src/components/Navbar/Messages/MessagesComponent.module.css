@@ -1,0 +1,10 @@
+/*
+.main {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  grid-template-areas: "name" "message";
+
+  padding: 20px;
+  border: 1px solid #000000;
+}
+*/
