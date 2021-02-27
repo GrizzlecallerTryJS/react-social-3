@@ -12,11 +12,16 @@ import Settings from "./components/Navbar/Settings/Settings";
 
 const App = (props) => {
   const ProfileComponent = () => {
-    return <Profile posts={props.posts} />;
+    return <Profile posts={props.state.profilePage.posts} />;
   };
 
   const MessagesComponent = () => {
-    return <Messages message={props.messages} users={props.users} />;
+    return (
+      <Messages
+        message={props.state.messagesPage.messages}
+        users={props.state.messagesPage.users}
+      />
+    );
   };
 
   const NewsComponent = (props) => {
