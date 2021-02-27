@@ -3,6 +3,8 @@ import style from "./DialogsComponent.module.css";
 import UsersComponent from "./UsersComponent/UsersComponent";
 import MessagesComponent from "./MessagesComponent/MessagesComponent";
 
+//TODO: -сделать отображение аватарки для юзера
+
 const DialogsComponent = (props) => {
   return (
     <div className={style.main}>
