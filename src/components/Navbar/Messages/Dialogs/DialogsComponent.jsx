@@ -1,16 +1,16 @@
 import React from "react";
 import style from "./DialogsComponent.module.css";
-import Users from "./Users/Users";
-import Messages from "./Messages/Messages";
+import UsersComponent from "./UsersComponent/UsersComponent";
+import MessagesComponent from "./MessagesComponent/MessagesComponent";
 
 const DialogsComponent = () => {
   return (
     <div className={style.main}>
       <div className={style.name}>
-        <Users />
+        <UsersComponent />
       </div>
       <div className={style.message}>
-        <Messages />
+        <MessagesComponent />
       </div>
     </div>
   );
