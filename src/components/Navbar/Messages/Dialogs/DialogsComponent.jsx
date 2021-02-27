@@ -3,14 +3,14 @@ import style from "./DialogsComponent.module.css";
 import UsersComponent from "./UsersComponent/UsersComponent";
 import MessagesComponent from "./MessagesComponent/MessagesComponent";
 
-const DialogsComponent = () => {
+const DialogsComponent = (props) => {
   return (
     <div className={style.main}>
       <div className={style.name}>
-        <UsersComponent />
+        <UsersComponent users={props.users} />
       </div>
       <div className={style.message}>
-        <MessagesComponent />
+        <MessagesComponent message={props.message} />
       </div>
     </div>
   );
