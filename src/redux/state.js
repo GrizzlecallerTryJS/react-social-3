@@ -1,4 +1,5 @@
 import defaultImage from "../assets/images/defaultImage.png";
+import render from "../render";
 
 let state = {
   messagesPage: {
@@ -33,6 +34,7 @@ export let addPost = (postMessage) => {
     image: defaultImage,
   };
   state.profilePage.posts.push(newPost);
+  render(state);
 };
 
 export default state;
