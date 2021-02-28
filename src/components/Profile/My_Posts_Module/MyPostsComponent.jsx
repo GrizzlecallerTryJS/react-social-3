@@ -7,7 +7,7 @@ const MyPostsComponent = (props) => {
   return (
     <div className={style.post_area_block}>
       <div>My Posts</div>
-      <NewPostComponent />
+      <NewPostComponent addPost={props.addPost} />
       <div>
         <OldPostsComponent posts={props.posts} />
       </div>

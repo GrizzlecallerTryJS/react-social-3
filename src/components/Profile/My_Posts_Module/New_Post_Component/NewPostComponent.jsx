@@ -1,11 +1,12 @@
 import React from "react";
 
-const NewPostComponent = () => {
+const NewPostComponent = (props) => {
+  debugger;
   let textElement = React.createRef();
 
   let addPostButtonAction = () => {
     let text = textElement.current.value;
-    alert(text);
+    props.addPost(text);
   };
 
   return (

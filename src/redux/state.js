@@ -26,4 +26,13 @@ let state = {
   },
 };
 
+export let addPost = (postMessage) => {
+  let newPost = {
+    id: state.profilePage.posts.length + 1,
+    message: postMessage,
+    image: defaultImage,
+  };
+  state.profilePage.posts.push(newPost);
+};
+
 export default state;

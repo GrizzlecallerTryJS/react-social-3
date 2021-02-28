@@ -12,7 +12,9 @@ import Settings from "./components/Navbar/Settings/Settings";
 
 const App = (props) => {
   const ProfileComponent = () => {
-    return <Profile posts={props.state.profilePage.posts} />;
+    return (
+      <Profile posts={props.state.profilePage.posts} addPost={props.addPost} />
+    );
   };
 
   const MessagesComponent = () => {
