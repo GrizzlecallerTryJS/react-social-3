@@ -17,7 +17,6 @@ const App = (props) => {
         posts={props.state.profilePage}
         addPost={props.addPost}
         updateNewPostText={props.updateNewPostText}
-        zeroingMessage={props.zeroingMessage}
       />
     );
   };
@@ -25,8 +24,10 @@ const App = (props) => {
   const MessagesComponent = () => {
     return (
       <Messages
-        message={props.state.messagesPage.messages}
+        message={props.state.messagesPage}
         users={props.state.messagesPage.users}
+        addMessage={props.addMessage}
+        updateNewMessageText={props.updateNewMessageText}
       />
     );
   };

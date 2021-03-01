@@ -11,7 +11,6 @@ const MyPostsComponent = (props) => {
         newPostText={props.posts.newPostText}
         addPost={props.addPost}
         updateNewPostText={props.updateNewPostText}
-        zeroingMessage={props.zeroingMessage}
       />
       <div>
         <OldPostsComponent posts={props.posts.posts} />

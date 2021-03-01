@@ -13,10 +13,14 @@ const DialogsComponent = (props) => {
         <UsersComponent users={props.users} />
       </div>
       <div className={style.message}>
-        <MessagesComponent message={props.message} />
+        <MessagesComponent message={props.message.messages} />
       </div>
       <div className={style.addMessage}>
-        <SendMessageComponent />
+        <SendMessageComponent
+          addMessage={props.addMessage}
+          updateNewMessageText={props.updateNewMessageText}
+          newMessageText={props.message.newMessageText}
+        />
       </div>
     </div>
   );

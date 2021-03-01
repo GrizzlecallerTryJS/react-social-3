@@ -15,6 +15,8 @@ let renderTree = (state) => {
           addPost={store.addPost}
           updateNewPostText={store.updateNewPostText}
           zeroingMessage={store.zeroingMessage}
+          addMessage={store.addMessage}
+          updateNewMessageText={store.updateNewMessageText}
         />
       </BrowserRouter>
     </React.StrictMode>,
