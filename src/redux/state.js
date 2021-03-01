@@ -1,5 +1,6 @@
 import defaultImage from "../assets/images/defaultImage.png";
-import render from "../render";
+
+let rerendenTree = () => {};
 
 let state = {
   messagesPage: {
@@ -38,17 +39,21 @@ export let addPost = () => {
   };
   state.profilePage.posts.push(newPost);
   zeroingMessage();
-  render(state);
+  rerendenTree(state);
 };
 
 export let updateNewPostText = (text) => {
   state.profilePage.newPostText = text;
 
-  render(state);
+  rerendenTree(state);
 };
 
 export let zeroingMessage = () => {
   state.profilePage.newPostText = "";
+};
+
+export let subscribe = (observer) => {
+  rerendenTree = observer;
 };
 
 export default state;
