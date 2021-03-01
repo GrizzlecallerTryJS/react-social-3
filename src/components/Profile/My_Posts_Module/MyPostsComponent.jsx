@@ -7,9 +7,14 @@ const MyPostsComponent = (props) => {
   return (
     <div className={style.post_area_block}>
       <div>My Posts</div>
-      <NewPostComponent addPost={props.addPost} />
+      <NewPostComponent
+        newPostText={props.posts.input}
+        addPost={props.addPost}
+        inputForPosts={props.inputForPosts}
+        zeroingMessage={props.zeroingMessage}
+      />
       <div>
-        <OldPostsComponent posts={props.posts} />
+        <OldPostsComponent posts={props.posts.posts} />
       </div>
     </div>
   );

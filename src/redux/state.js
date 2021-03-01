@@ -24,6 +24,9 @@ let state = {
       { id: 1, message: "BEEP", image: defaultImage },
       { id: 2, message: "BOOP", image: defaultImage },
     ],
+    input: {
+      message: "",
+    },
   },
 };
 
@@ -35,6 +38,18 @@ export let addPost = (postMessage) => {
   };
   state.profilePage.posts.push(newPost);
   render(state);
+};
+
+export let inputForPosts = (text) => {
+  debugger;
+
+  state.profilePage.input.message = text;
+
+  render(state);
+};
+
+export let zeroingMessage = (zero) => {
+  state.profilePage.input.message = zero;
 };
 
 export default state;

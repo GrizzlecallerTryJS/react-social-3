@@ -1,18 +1,26 @@
 import React from "react";
 
 const NewPostComponent = (props) => {
-  debugger;
   let textElement = React.createRef();
 
   let addPostButtonAction = () => {
+    props.addPost(props.newPostText.message);
+    props.zeroingMessage("");
+  };
+
+  let tmp = () => {
     let text = textElement.current.value;
-    props.addPost(text);
+    props.inputForPosts(text);
   };
 
   return (
     <div>
       <div>New Post</div>
-      <textarea ref={textElement} />
+      <textarea
+        ref={textElement}
+        onChange={tmp}
+        value={props.newPostText.message}
+      />
       <button onClick={addPostButtonAction}>Add post</button>
     </div>
   );
