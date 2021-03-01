@@ -13,7 +13,12 @@ import Settings from "./components/Navbar/Settings/Settings";
 const App = (props) => {
   const ProfileComponent = () => {
     return (
-      <Profile posts={props.state.profilePage.posts} addPost={props.addPost} />
+      <Profile
+        posts={props.state.profilePage}
+        addPost={props.addPost}
+        inputForPosts={props.inputForPosts}
+        zeroingMessage={props.zeroingMessage}
+      />
     );
   };
 

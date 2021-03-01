@@ -10,7 +10,12 @@ const Profile = (props) => {
         <ProfileInfo />
       </div>
       <div className={style.myPosts}>
-        <MyPostsComponent posts={props.posts} addPost={props.addPost} />
+        <MyPostsComponent
+          posts={props.posts}
+          addPost={props.addPost}
+          inputForPosts={props.inputForPosts}
+          zeroingMessage={props.zeroingMessage}
+        />
       </div>
     </div>
   );
