@@ -4,13 +4,12 @@ const NewPostComponent = (props) => {
   let textElement = React.createRef();
 
   let addPostButtonAction = () => {
-    props.addPost(props.newPostText.message);
-    props.zeroingMessage("");
+    props.addPost();
   };
 
-  let tmp = () => {
+  let onPostChange = () => {
     let text = textElement.current.value;
-    props.inputForPosts(text);
+    props.updateNewPostText(text);
   };
 
   return (
@@ -18,8 +17,8 @@ const NewPostComponent = (props) => {
       <div>New Post</div>
       <textarea
         ref={textElement}
-        onChange={tmp}
-        value={props.newPostText.message}
+        onChange={onPostChange}
+        value={props.newPostText}
       />
       <button onClick={addPostButtonAction}>Add post</button>
     </div>

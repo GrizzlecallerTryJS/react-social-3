@@ -13,7 +13,7 @@ const Profile = (props) => {
         <MyPostsComponent
           posts={props.posts}
           addPost={props.addPost}
-          inputForPosts={props.inputForPosts}
+          updateNewPostText={props.updateNewPostText}
           zeroingMessage={props.zeroingMessage}
         />
       </div>
