@@ -1,26 +1,20 @@
 import "./index.css";
-import state from "./redux/state";
+import store from "./redux/state";
 import React from "react";
 import ReactDOM from "react-dom";
 
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import {
-  addPost,
-  updateNewPostText,
-  zeroingMessage,
-  subscribe,
-} from "./redux/state";
 
-let rendenTree = (state) => {
+let renderTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <App
           state={state}
-          addPost={addPost}
-          updateNewPostText={updateNewPostText}
-          zeroingMessage={zeroingMessage}
+          addPost={store.addPost}
+          updateNewPostText={store.updateNewPostText}
+          zeroingMessage={store.zeroingMessage}
         />
       </BrowserRouter>
     </React.StrictMode>,
@@ -28,8 +22,8 @@ let rendenTree = (state) => {
   );
 };
 
-rendenTree(state);
+renderTree(store.getState());
 
-subscribe(rendenTree);
+store.subscribe(renderTree);
 
-export default rendenTree;
+export default renderTree;
