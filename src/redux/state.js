@@ -20,6 +20,7 @@ let store = {
         { id: 3, message: "Lorem ipsum dolor sit." },
         { id: 4, message: "Lorem ipsum dolor sit amet." },
       ],
+      newMessageText: "blablabla",
     },
 
     profilePage: {
@@ -29,6 +30,10 @@ let store = {
       ],
       newPostText: "ddd5",
     },
+  },
+
+  _rerender() {
+    store._rerenderTree(store._state);
   },
 
   getState() {
@@ -42,18 +47,37 @@ let store = {
       image: defaultImage,
     };
     store._state.profilePage.posts.push(newPost);
+    store.zeroingPost();
+    store._rerender();
+  },
+
+  addMessage() {
+    let newMessage = {
+      id: store._state.messagesPage.messages.length + 1,
+      message: store._state.messagesPage.newMessageText,
+    };
+    store._state.messagesPage.messages.push(newMessage);
     store.zeroingMessage();
-    store._rerenderTree(store._state);
+    store._rerender();
+  },
+
+  updateNewMessageText(text) {
+    store._state.messagesPage.newMessageText = text;
+    store._rerender();
   },
 
   updateNewPostText(text) {
     store._state.profilePage.newPostText = text;
 
-    store._rerenderTree(store._state);
+    store._rerender();
+  },
+
+  zeroingPost() {
+    store._state.profilePage.newPostText = "";
   },
 
   zeroingMessage() {
-    store._state.profilePage.newPostText = "";
+    store._state.messagesPage.newMessageText = "";
   },
 
   subscribe(observer) {
