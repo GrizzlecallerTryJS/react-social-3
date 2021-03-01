@@ -8,9 +8,9 @@ const MyPostsComponent = (props) => {
     <div className={style.post_area_block}>
       <div>My Posts</div>
       <NewPostComponent
-        newPostText={props.posts.input}
+        newPostText={props.posts.newPostText}
         addPost={props.addPost}
-        inputForPosts={props.inputForPosts}
+        updateNewPostText={props.updateNewPostText}
         zeroingMessage={props.zeroingMessage}
       />
       <div>

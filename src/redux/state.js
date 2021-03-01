@@ -24,32 +24,31 @@ let state = {
       { id: 1, message: "BEEP", image: defaultImage },
       { id: 2, message: "BOOP", image: defaultImage },
     ],
-    input: {
-      message: "",
-    },
+    newPostText: "ddd",
   },
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
   let newPost = {
     id: state.profilePage.posts.length + 1,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     image: defaultImage,
   };
   state.profilePage.posts.push(newPost);
+  zeroingMessage();
   render(state);
 };
 
-export let inputForPosts = (text) => {
-  debugger;
-
-  state.profilePage.input.message = text;
+export let updateNewPostText = (text) => {
+  state.profilePage.newPostText = text;
 
   render(state);
 };
 
-export let zeroingMessage = (zero) => {
-  state.profilePage.input.message = zero;
+export let zeroingMessage = () => {
+  state.profilePage.newPostText = "";
 };
 
 export default state;

@@ -16,7 +16,7 @@ const App = (props) => {
       <Profile
         posts={props.state.profilePage}
         addPost={props.addPost}
-        inputForPosts={props.inputForPosts}
+        updateNewPostText={props.updateNewPostText}
         zeroingMessage={props.zeroingMessage}
       />
     );
@@ -48,11 +48,11 @@ const App = (props) => {
       <Header />
       <Navbar />
 
-      <Route path="/profile" component={ProfileComponent} />
-      <Route exact path="/messages" component={MessagesComponent} />
-      <Route path="/news" component={NewsComponent} />
-      <Route path="/music" component={MusicComponent} />
-      <Route path="/settings" component={SettingsComponent} />
+      <Route path="/profile" render={ProfileComponent} />
+      <Route exact path="/messages" render={MessagesComponent} />
+      <Route path="/news" render={NewsComponent} />
+      <Route path="/music" render={MusicComponent} />
+      <Route path="/settings" render={SettingsComponent} />
     </div>
   );
 };
