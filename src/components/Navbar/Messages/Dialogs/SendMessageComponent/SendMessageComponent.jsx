@@ -4,12 +4,12 @@ const SendMessageComponent = (props) => {
   let textElement = React.createRef();
 
   let sendMessageButtonAction = () => {
-    props.dispatch({ type: "ADD_MESSAGE" });
+    props.dispatch(props.sendMessageAC());
   };
 
   let onMessageChange = () => {
     let text = textElement.current.value;
-    props.dispatch({ type: "UPDATE_NEW_MESSAGE_TEXT", text: text });
+    props.dispatch(props.onMessageChangeAC(text));
   };
 
   return (

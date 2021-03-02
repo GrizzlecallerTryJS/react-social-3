@@ -1,5 +1,10 @@
 import "./index.css";
-import store from "./redux/state";
+import store, {
+  addPostAC,
+  onMessageChangeAC,
+  onPostChangeAC,
+  sendMessageAC,
+} from "./redux/state";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -10,7 +15,14 @@ let renderTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} />
+        <App
+          state={state}
+          dispatch={store.dispatch.bind(store)}
+          addPostAC={addPostAC.bind(store)}
+          onPostChangeAC={onPostChangeAC.bind(store)}
+          sendMessageAC={sendMessageAC.bind(store)}
+          onMessageChangeAC={onMessageChangeAC.bind(store)}
+        />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

@@ -4,12 +4,12 @@ const NewPostComponent = (props) => {
   let textElement = React.createRef();
 
   let addPostButtonAction = () => {
-    props.dispatch({ type: "ADD_POST" });
+    props.dispatch(props.addPostAC());
   };
 
   let onPostChange = () => {
     let text = textElement.current.value;
-    props.dispatch({ type: "UPDATE_NEW_POST_TEXT", text: text });
+    props.dispatch(props.onPostChangeAC(text));
   };
 
   return (

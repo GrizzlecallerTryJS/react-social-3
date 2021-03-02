@@ -9,6 +9,8 @@ const Messages = (props) => {
         message={props.message}
         users={props.users}
         dispatch={props.dispatch}
+        sendMessageAC={props.sendMessageAC}
+        onMessageChangeAC={props.onMessageChangeAC}
       />
     </div>
   );
