@@ -8,8 +8,7 @@ const Messages = (props) => {
       <DialogsComponent
         message={props.message}
         users={props.users}
-        addMessage={props.addMessage}
-        updateNewMessageText={props.updateNewMessageText}
+        dispatch={props.dispatch}
       />
     </div>
   );
