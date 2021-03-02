@@ -10,7 +10,12 @@ const Profile = (props) => {
         <ProfileInfo />
       </div>
       <div className={style.myPosts}>
-        <MyPostsComponent posts={props.posts} dispatch={props.dispatch} />
+        <MyPostsComponent
+          posts={props.posts}
+          dispatch={props.dispatch}
+          addPostAC={props.addPostAC}
+          onPostChangeAC={props.onPostChangeAC}
+        />
       </div>
     </div>
   );

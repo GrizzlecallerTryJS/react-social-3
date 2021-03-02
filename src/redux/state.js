@@ -1,5 +1,10 @@
 import defaultImage from "../assets/images/defaultImage.png";
 
+const ADD_POST = "ADD_POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const ADD_MESSAGE = "ADD_MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
+
 let store = {
   _callSubscriber() {},
 
@@ -85,16 +90,42 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "ADD_MESSAGE") {
+    if (action.type === ADD_MESSAGE) {
       this._addMessage();
-    } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._updateNewMessageText(action.text);
-    } else if (action.type === "ADD_POST") {
+    } else if (action.type === ADD_POST) {
       this._addPost();
-    } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._updateNewPostText(action.text);
     }
   },
+};
+
+export const addPostAC = () => {
+  return {
+    type: ADD_POST,
+  };
+};
+
+export const onPostChangeAC = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    text: text,
+  };
+};
+
+export const sendMessageAC = () => {
+  return {
+    type: ADD_MESSAGE,
+  };
+};
+
+export const onMessageChangeAC = (text) => {
+  return {
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    text: text,
+  };
 };
 
 window.state = store._state;
