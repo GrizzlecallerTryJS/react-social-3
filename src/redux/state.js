@@ -1,7 +1,11 @@
 import defaultImage from "../assets/images/defaultImage.png";
 
 let store = {
-  _rerenderTree() {},
+  _callSubscriber() {},
+
+  _rerender() {
+    this._callSubscriber(this._state);
+  },
 
   _state: {
     messagesPage: {
@@ -32,10 +36,6 @@ let store = {
     },
   },
 
-  _rerender() {
-    store._rerenderTree(store._state);
-  },
-
   getState() {
     return this._state;
   },
@@ -43,45 +43,45 @@ let store = {
   addPost() {
     let newPost = {
       id: store._state.profilePage.posts.length + 1,
-      message: store._state.profilePage.newPostText,
+      message: this._state.profilePage.newPostText,
       image: defaultImage,
     };
-    store._state.profilePage.posts.push(newPost);
-    store.zeroingPost();
-    store._rerender();
+    this._state.profilePage.posts.push(newPost);
+    this.zeroingPost();
+    this._rerender();
   },
 
   addMessage() {
     let newMessage = {
-      id: store._state.messagesPage.messages.length + 1,
-      message: store._state.messagesPage.newMessageText,
+      id: this._state.messagesPage.messages.length + 1,
+      message: this._state.messagesPage.newMessageText,
     };
-    store._state.messagesPage.messages.push(newMessage);
-    store.zeroingMessage();
-    store._rerender();
+    this._state.messagesPage.messages.push(newMessage);
+    this.zeroingMessage();
+    this._rerender();
   },
 
   updateNewMessageText(text) {
-    store._state.messagesPage.newMessageText = text;
-    store._rerender();
+    this._state.messagesPage.newMessageText = text;
+    this._rerender();
   },
 
   updateNewPostText(text) {
-    store._state.profilePage.newPostText = text;
+    this._state.profilePage.newPostText = text;
 
-    store._rerender();
+    this._rerender();
   },
 
   zeroingPost() {
-    store._state.profilePage.newPostText = "";
+    this._state.profilePage.newPostText = "";
   },
 
   zeroingMessage() {
-    store._state.messagesPage.newMessageText = "";
+    this._state.messagesPage.newMessageText = "";
   },
 
   subscribe(observer) {
-    store._rerenderTree = observer;
+    this._callSubscriber = observer;
   },
 };
 

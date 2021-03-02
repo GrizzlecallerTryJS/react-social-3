@@ -12,11 +12,11 @@ let renderTree = (state) => {
       <BrowserRouter>
         <App
           state={state}
-          addPost={store.addPost}
-          updateNewPostText={store.updateNewPostText}
-          zeroingMessage={store.zeroingMessage}
-          addMessage={store.addMessage}
-          updateNewMessageText={store.updateNewMessageText}
+          addPost={store.addPost.bind(store)}
+          updateNewPostText={store.updateNewPostText.bind(store)}
+          zeroingMessage={store.zeroingMessage.bind(store)}
+          addMessage={store.addMessage.bind(store)}
+          updateNewMessageText={store.updateNewMessageText.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>,
