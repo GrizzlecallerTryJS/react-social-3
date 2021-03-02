@@ -1,14 +1,12 @@
 import React from "react";
 
 const SendMessageComponent = (props) => {
-  let textElement = React.createRef();
-
   let sendMessageButtonAction = () => {
     props.dispatch(props.sendMessageAC());
   };
 
-  let onMessageChange = () => {
-    let text = textElement.current.value;
+  let onMessageChange = (e) => {
+    let text = e.target.value;
     props.dispatch(props.onMessageChangeAC(text));
   };
 
@@ -16,7 +14,6 @@ const SendMessageComponent = (props) => {
     <div>
       <div>
         <textarea
-          ref={textElement}
           onChange={onMessageChange}
           value={props.newMessageText}
         ></textarea>
