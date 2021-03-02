@@ -9,8 +9,7 @@ const MyPostsComponent = (props) => {
       <div>My Posts</div>
       <NewPostComponent
         newPostText={props.posts.newPostText}
-        addPost={props.addPost}
-        updateNewPostText={props.updateNewPostText}
+        dispatch={props.dispatch}
       />
       <div>
         <OldPostsComponent posts={props.posts.posts} />

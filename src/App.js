@@ -13,11 +13,7 @@ import Settings from "./components/Navbar/Settings/Settings";
 const App = (props) => {
   const ProfileComponent = () => {
     return (
-      <Profile
-        posts={props.state.profilePage}
-        addPost={props.addPost}
-        updateNewPostText={props.updateNewPostText}
-      />
+      <Profile posts={props.state.profilePage} dispatch={props.dispatch} />
     );
   };
 
@@ -26,8 +22,7 @@ const App = (props) => {
       <Messages
         message={props.state.messagesPage}
         users={props.state.messagesPage.users}
-        addMessage={props.addMessage}
-        updateNewMessageText={props.updateNewMessageText}
+        dispatch={props.dispatch}
       />
     );
   };
