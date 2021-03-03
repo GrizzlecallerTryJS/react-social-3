@@ -1,4 +1,6 @@
 import defaultImage from "../assets/images/defaultImage.png";
+import messagePageReducer from "./messagePageReducer";
+import profilePageReducer from "./profilePageReducer";
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -41,48 +43,8 @@ let store = {
     },
   },
 
-  _zeroingPost() {
-    this._state.profilePage.newPostText = "";
-  },
-
-  _zeroingMessage() {
-    this._state.messagesPage.newMessageText = "";
-  },
-
   getState() {
     return this._state;
-  },
-
-  _addPost() {
-    let newPost = {
-      id: store._state.profilePage.posts.length + 1,
-      message: this._state.profilePage.newPostText,
-      image: defaultImage,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._zeroingPost();
-    this._rerender();
-  },
-
-  _addMessage() {
-    let newMessage = {
-      id: this._state.messagesPage.messages.length + 1,
-      message: this._state.messagesPage.newMessageText,
-    };
-    this._state.messagesPage.messages.push(newMessage);
-    this._zeroingMessage();
-    this._rerender();
-  },
-
-  _updateNewMessageText(text) {
-    this._state.messagesPage.newMessageText = text;
-    this._rerender();
-  },
-
-  _updateNewPostText(text) {
-    this._state.profilePage.newPostText = text;
-
-    this._rerender();
   },
 
   subscribe(observer) {
@@ -90,15 +52,17 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_MESSAGE) {
-      this._addMessage();
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._updateNewMessageText(action.text);
-    } else if (action.type === ADD_POST) {
-      this._addPost();
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._updateNewPostText(action.text);
-    }
+    this._state.messagesPage = messagePageReducer(
+      this._state.messagesPage,
+      action
+    );
+
+    this._state.profilePage = profilePageReducer(
+      this._state.profilePage,
+      action
+    );
+
+    this._rerender();
   },
 };
 

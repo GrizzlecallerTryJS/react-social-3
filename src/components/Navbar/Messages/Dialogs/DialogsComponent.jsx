@@ -3,7 +3,6 @@ import style from "./DialogsComponent.module.css";
 import UsersComponent from "./UsersComponent/UsersComponent";
 import MessagesComponent from "./MessagesComponent/MessagesComponent";
 import SendMessageComponent from "./SendMessageComponent/SendMessageComponent";
-import Messages from "../Messages";
 
 //TODO: -сделать отображение аватарки для юзера
 
