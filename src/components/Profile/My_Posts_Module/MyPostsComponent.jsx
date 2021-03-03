@@ -2,7 +2,6 @@ import React from "react";
 import style from "./MyPostsComponent.module.css";
 import NewPostComponent from "./New_Post_Component/NewPostComponent";
 import OldPostsComponent from "./Old_Posts_component/OldPostsComponent";
-import Profile from "../Profile";
 
 const MyPostsComponent = (props) => {
   return (
