@@ -1,15 +1,12 @@
 import "./index.css";
-import store, {
-  addPostAC,
-  onMessageChangeAC,
-  onPostChangeAC,
-  sendMessageAC,
-} from "./redux/state";
+import store from "./redux/react-store";
 import React from "react";
 import ReactDOM from "react-dom";
 
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { addPostAC, onPostChangeAC } from "./redux/profilePageReducer";
+import { onMessageChangeAC, sendMessageAC } from "./redux/messagePageReducer";
 
 let renderTree = (state) => {
   ReactDOM.render(
@@ -31,6 +28,11 @@ let renderTree = (state) => {
 
 renderTree(store.getState());
 
-store.subscribe(renderTree);
+//store.subscribe(renderTree);
+
+store.subscribe(() => {
+  let state = store.getState();
+  renderTree(state);
+});
 
 export default renderTree;
