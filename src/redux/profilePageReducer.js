@@ -12,7 +12,6 @@ const initState = {
 };
 
 const profilePageReducer = (state = initState, action) => {
-  debugger;
   let _addPost = () => {
     let newPost = {
       id: state.posts.length + 1,

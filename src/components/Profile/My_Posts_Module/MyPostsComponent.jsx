@@ -8,13 +8,12 @@ const MyPostsComponent = (props) => {
     <div className={style.post_area_block}>
       <div>My Posts</div>
       <NewPostComponent
-        newPostText={props.posts.newPostText}
-        dispatch={props.dispatch}
-        addPostAC={props.addPostAC}
-        onPostChangeAC={props.onPostChangeAC}
+        newPostText={props.state.newPostText}
+        addPost={props.addPost}
+        onPostChange={props.onPostChange}
       />
       <div>
-        <OldPostsComponent posts={props.posts.posts} />
+        <OldPostsComponent posts={props.state.posts} />
       </div>
     </div>
   );

@@ -12,26 +12,11 @@ import Settings from "./components/Navbar/Settings/Settings";
 
 const App = (props) => {
   const ProfileComponent = () => {
-    return (
-      <Profile
-        posts={props.state.profilePageReducer}
-        dispatch={props.dispatch}
-        addPostAC={props.addPostAC}
-        onPostChangeAC={props.onPostChangeAC}
-      />
-    );
+    return <Profile state={props.state} />;
   };
 
   const MessagesComponent = () => {
-    return (
-      <Messages
-        message={props.state.messagePageReducer}
-        users={props.state.messagePageReducer.users}
-        dispatch={props.dispatch}
-        sendMessageAC={props.sendMessageAC}
-        onMessageChangeAC={props.onMessageChangeAC}
-      />
-    );
+    return <Messages state={props.state} />;
   };
 
   const NewsComponent = (props) => {
