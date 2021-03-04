@@ -3,7 +3,16 @@ import defaultImage from "../assets/images/defaultImage.png";
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 
-const profilePageReducer = (state, action) => {
+const initState = {
+  posts: [
+    { id: 1, message: "BEEP", image: defaultImage },
+    { id: 2, message: "BOOP", image: defaultImage },
+  ],
+  newPostText: "ddd5",
+};
+
+const profilePageReducer = (state = initState, action) => {
+  debugger;
   let _addPost = () => {
     let newPost = {
       id: state.posts.length + 1,
@@ -29,6 +38,19 @@ const profilePageReducer = (state, action) => {
   }
 
   return state;
+};
+
+export const addPostAC = () => {
+  return {
+    type: ADD_POST,
+  };
+};
+
+export const onPostChangeAC = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    text: text,
+  };
 };
 
 export default profilePageReducer;

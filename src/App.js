@@ -14,7 +14,7 @@ const App = (props) => {
   const ProfileComponent = () => {
     return (
       <Profile
-        posts={props.state.profilePage}
+        posts={props.state.profilePageReducer}
         dispatch={props.dispatch}
         addPostAC={props.addPostAC}
         onPostChangeAC={props.onPostChangeAC}
@@ -25,8 +25,8 @@ const App = (props) => {
   const MessagesComponent = () => {
     return (
       <Messages
-        message={props.state.messagesPage}
-        users={props.state.messagesPage.users}
+        message={props.state.messagePageReducer}
+        users={props.state.messagePageReducer.users}
         dispatch={props.dispatch}
         sendMessageAC={props.sendMessageAC}
         onMessageChangeAC={props.onMessageChangeAC}

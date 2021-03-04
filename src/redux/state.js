@@ -2,11 +2,6 @@ import defaultImage from "../assets/images/defaultImage.png";
 import messagePageReducer from "./messagePageReducer";
 import profilePageReducer from "./profilePageReducer";
 
-const ADD_POST = "ADD_POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
-const ADD_MESSAGE = "ADD_MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
-
 let store = {
   _callSubscriber() {},
 
@@ -64,32 +59,6 @@ let store = {
 
     this._rerender();
   },
-};
-
-export const addPostAC = () => {
-  return {
-    type: ADD_POST,
-  };
-};
-
-export const onPostChangeAC = (text) => {
-  return {
-    type: UPDATE_NEW_POST_TEXT,
-    text: text,
-  };
-};
-
-export const sendMessageAC = () => {
-  return {
-    type: ADD_MESSAGE,
-  };
-};
-
-export const onMessageChangeAC = (text) => {
-  return {
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    text: text,
-  };
 };
 
 window.state = store._state;
