@@ -2,12 +2,12 @@ import React from "react";
 
 const SendMessageComponent = (props) => {
   let sendMessageButtonAction = () => {
-    props.dispatch(props.sendMessageAC());
+    props.sendMessage();
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    props.dispatch(props.onMessageChangeAC(text));
+    props.onMessageChange(text);
   };
 
   return (

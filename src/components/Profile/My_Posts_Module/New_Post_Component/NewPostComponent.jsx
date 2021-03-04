@@ -2,12 +2,12 @@ import React from "react";
 
 const NewPostComponent = (props) => {
   let addPostButtonAction = () => {
-    props.dispatch(props.addPostAC());
+    props.addPost();
   };
 
   let onPostChange = (e) => {
     let text = e.target.value;
-    props.dispatch(props.onPostChangeAC(text));
+    props.onPostChange(text);
   };
 
   return (
