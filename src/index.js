@@ -5,12 +5,15 @@ import ReactDOM from "react-dom";
 
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { Provider } from "./ContextProvider";
 
 let renderTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} />
+        <Provider store={state}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

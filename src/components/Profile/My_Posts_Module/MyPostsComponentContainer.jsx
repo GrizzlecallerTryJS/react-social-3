@@ -1,25 +1,32 @@
 import React from "react";
 import MyPostsComponent from "./MyPostsComponent";
 import { addPostAC, onPostChangeAC } from "../../../redux/profilePageReducer";
+import ContextProvider from "../../../ContextProvider";
 
-const MyPostsComponentContainer = (props) => {
-  let store = props.state.getState().profilePageReducer;
-
-  let addPost = () => {
-    props.state.dispatch(addPostAC());
-  };
-
-  let onPostChange = (text) => {
-    debugger;
-    props.state.dispatch(onPostChangeAC(text));
-  };
-
+const MyPostsComponentContainer = () => {
   return (
-    <MyPostsComponent
-      state={store}
-      addPost={addPost}
-      onPostChange={onPostChange}
-    />
+    <ContextProvider.Consumer>
+      {(state) => {
+        debugger;
+        let store = state.getState().profilePageReducer;
+
+        let addPost = () => {
+          state.dispatch(addPostAC());
+        };
+
+        let onPostChange = (text) => {
+          state.dispatch(onPostChangeAC(text));
+        };
+
+        return (
+          <MyPostsComponent
+            state={store}
+            addPost={addPost}
+            onPostChange={onPostChange}
+          />
+        );
+      }}
+    </ContextProvider.Consumer>
   );
 };
 

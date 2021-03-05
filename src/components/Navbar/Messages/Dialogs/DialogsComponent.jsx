@@ -7,7 +7,6 @@ import SendMessageComponent from "./SendMessageComponent/SendMessageComponent";
 //TODO: -сделать отображение аватарки для юзера
 
 const DialogsComponent = (props) => {
-  debugger;
   return (
     <div className={style.main}>
       <div className={style.name}>
