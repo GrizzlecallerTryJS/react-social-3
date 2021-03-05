@@ -11,12 +11,20 @@ import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 
 const App = (props) => {
-  const ProfileComponent = () => {
+  /*  const ProfileComponent = () => {
     return <Profile state={props.state} />;
+  };*/
+
+  const ProfileComponent = () => {
+    return <Profile />;
   };
 
-  const MessagesComponent = () => {
+  /*const MessagesComponent = () => {
     return <Messages state={props.state} />;
+  };*/
+
+  const MessagesComponent = () => {
+    return <Messages />;
   };
 
   const NewsComponent = (props) => {

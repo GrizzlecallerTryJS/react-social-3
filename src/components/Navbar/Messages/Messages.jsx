@@ -5,7 +5,7 @@ import DialogsComponentContainer from "./Dialogs/DialogsComponentContainer";
 const Messages = (props) => {
   return (
     <div className={style.main}>
-      <DialogsComponentContainer state={props.state} />
+      <DialogsComponentContainer />
     </div>
   );
 };
