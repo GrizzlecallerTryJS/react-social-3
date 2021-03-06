@@ -41,11 +41,15 @@ const initState = {
 const usersPageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
 
-  let _follow = (id) => {
-    stateCopy.users = { ...state.users };
-    stateCopy.users[id - 1].followStatus
-      ? (stateCopy.users[id - 1].followStatus = false)
-      : (stateCopy.users[id - 1].followStatus = true);
+  let _follow = (userID) => {
+    stateCopy.users = [...state.users];
+    stateCopy.users.map((u) => {
+      if (u.id === userID && u.followStatus === false) {
+        u.followStatus = true;
+      } else if (u.id === userID && u.followStatus === true) {
+        u.followStatus = false;
+      }
+    });
   };
 
   if (action.type === FOLLOW_BUTTON) {

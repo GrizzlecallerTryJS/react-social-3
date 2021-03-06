@@ -11,7 +11,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    followButtonAC: (id) => {
+    follow: (id) => {
       dispatch(followButtonAC(id));
     },
   };

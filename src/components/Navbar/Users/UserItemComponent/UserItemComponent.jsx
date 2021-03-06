@@ -2,9 +2,9 @@ import React from "react";
 import style from "./UserItemComponent.module.css";
 
 const UserItemComponent = (props) => {
-  let followButton = () => {
-    props.followButtonAC(props.id);
-    debugger;
+  debugger;
+  let followButton = (id) => {
+    props.follow(id);
   };
   return props.state.users.map((u) => {
     return (
@@ -16,9 +16,8 @@ const UserItemComponent = (props) => {
         city={u.city}
         about={u.about}
         followStatus={u.followStatus}
-        followButton={followButton}
+        followButton={() => followButton(u.id)}
         key={u.id}
-        followButtonAC={props.followButtonAC}
         id={u.id}
       />
     );
