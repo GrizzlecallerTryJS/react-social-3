@@ -1,4 +1,3 @@
-import React from "react";
 import DialogsComponent from "./DialogsComponent";
 import {
   onMessageChangeAC,
