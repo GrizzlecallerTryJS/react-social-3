@@ -4,33 +4,28 @@ import {
   onMessageChangeAC,
   sendMessageAC,
 } from "../../../../redux/messagePageReducer";
-import ContextProvider from "../../../../ContextProvider";
+import { connect } from "react-redux";
 
-const DialogsComponentContainer = () => {
-  return (
-    <ContextProvider.Consumer value>
-      {(state) => {
-        debugger;
-        let store = state.getState().messagePageReducer;
-
-        let sendMessage = () => {
-          state.dispatch(sendMessageAC());
-        };
-
-        let onMessageChange = (text) => {
-          state.dispatch(onMessageChangeAC(text));
-        };
-
-        return (
-          <DialogsComponent
-            state={store}
-            sendMessage={sendMessage}
-            onMessageChange={onMessageChange}
-          />
-        );
-      }}
-    </ContextProvider.Consumer>
-  );
+const mapStateToProps = (state) => {
+  return {
+    state: state.messagePageReducer,
+  };
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendMessage: () => {
+      dispatch(sendMessageAC());
+    },
+    onMessageChange: (text) => {
+      dispatch(onMessageChangeAC(text));
+    },
+  };
+};
+
+const DialogsComponentContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DialogsComponent);
 
 export default DialogsComponentContainer;
