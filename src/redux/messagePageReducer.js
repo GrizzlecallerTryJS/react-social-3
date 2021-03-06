@@ -10,10 +10,7 @@ const initState = {
   ],
   messages: [
     { id: 1, message: "Lorem ipsum dolor sit amet, consectetur." },
-    {
-      id: 2,
-      message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-    },
+    { id: 2, message: "Lorem ipsum dolor amet, consectetur adipisicing." },
     { id: 3, message: "Lorem ipsum dolor sit." },
     { id: 4, message: "Lorem ipsum dolor sit amet." },
   ],
@@ -21,12 +18,10 @@ const initState = {
 };
 
 const messagePageReducer = (state = initState, action) => {
-  let stateCopy = initState;
+  let stateCopy = { ...state };
+
   let _addMessage = () => {
-    stateCopy = {
-      ...state,
-      ...state.messages,
-    };
+    stateCopy.messages = [...state.messages];
     let newMessage = {
       id: stateCopy.messages.length + 1,
       message: stateCopy.newMessageText,
@@ -36,16 +31,10 @@ const messagePageReducer = (state = initState, action) => {
   };
 
   let _updateNewMessageText = (text) => {
-    stateCopy = {
-      ...state,
-    };
     stateCopy.newMessageText = text;
   };
 
   let _zeroingMessage = () => {
-    stateCopy = {
-      ...state,
-    };
     stateCopy.newMessageText = "";
   };
 

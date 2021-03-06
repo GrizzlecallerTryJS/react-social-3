@@ -12,12 +12,9 @@ const initState = {
 };
 
 const profilePageReducer = (state = initState, action) => {
-  let stateCopy = initState;
+  let stateCopy = { ...state };
   let _addPost = () => {
-    stateCopy = {
-      ...state,
-      ...state.posts,
-    };
+    stateCopy.posts = [...state.posts];
     let newPost = {
       id: stateCopy.posts.length + 1,
       message: stateCopy.newPostText,
@@ -28,12 +25,10 @@ const profilePageReducer = (state = initState, action) => {
   };
 
   let _updateNewPostText = (text) => {
-    stateCopy = { ...state };
     stateCopy.newPostText = text;
   };
 
   let _zeroingPost = () => {
-    stateCopy = { ...state };
     stateCopy.newPostText = "";
   };
 
