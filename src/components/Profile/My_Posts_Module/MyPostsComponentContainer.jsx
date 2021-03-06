@@ -4,7 +4,6 @@ import { addPostAC, onPostChangeAC } from "../../../redux/profilePageReducer";
 import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
-  debugger;
   return {
     state: state.profilePageReducer,
   };
