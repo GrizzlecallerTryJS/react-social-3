@@ -1,0 +1,17 @@
+.main {
+  display: grid;
+  grid-template-areas: "avatarPic about";
+  grid-template-columns: 1fr 10fr;
+}
+
+.avatarPic {
+  grid-area: avatarPic;
+}
+.avatarPic img {
+  width: 50px;
+}
+
+.about {
+  grid-area: about;
+  border: 1px solid #000000;
+}
