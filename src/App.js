@@ -9,6 +9,7 @@ import Messages from "./components/Navbar/Messages/Messages";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
+import Users from "./components/Navbar/Users/Users";
 
 const App = (props) => {
   /*  const ProfileComponent = () => {
@@ -39,6 +40,10 @@ const App = (props) => {
     return <Settings />;
   };
 
+  const UsersComponent = (props) => {
+    return <Users />;
+  };
+
   return (
     <div className={style.app_wrapper}>
       <Header />
@@ -49,6 +54,7 @@ const App = (props) => {
       <Route path="/news" render={NewsComponent} />
       <Route path="/music" render={MusicComponent} />
       <Route path="/settings" render={SettingsComponent} />
+      <Route path="/users" render={UsersComponent} />
     </div>
   );
 };
