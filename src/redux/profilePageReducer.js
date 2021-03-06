@@ -13,14 +13,16 @@ const initState = {
 
 const profilePageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
+
   let _addPost = () => {
-    stateCopy.posts = [...state.posts];
     let newPost = {
       id: stateCopy.posts.length + 1,
       message: stateCopy.newPostText,
       image: defaultImage,
     };
-    stateCopy.posts.push(newPost);
+
+    stateCopy.posts = [...state.posts, newPost];
+
     _zeroingPost();
   };
 

@@ -21,12 +21,13 @@ const messagePageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
 
   let _addMessage = () => {
-    stateCopy.messages = [...state.messages];
     let newMessage = {
       id: stateCopy.messages.length + 1,
       message: stateCopy.newMessageText,
     };
-    stateCopy.messages.push(newMessage);
+
+    stateCopy.messages = [...state.messages, newMessage];
+
     _zeroingMessage();
   };
 
