@@ -12,22 +12,29 @@ const initState = {
 };
 
 const profilePageReducer = (state = initState, action) => {
+  let stateCopy = initState;
   let _addPost = () => {
+    stateCopy = {
+      ...state,
+      ...state.posts,
+    };
     let newPost = {
-      id: state.posts.length + 1,
-      message: state.newPostText,
+      id: stateCopy.posts.length + 1,
+      message: stateCopy.newPostText,
       image: defaultImage,
     };
-    state.posts.push(newPost);
+    stateCopy.posts.push(newPost);
     _zeroingPost();
   };
 
   let _updateNewPostText = (text) => {
-    state.newPostText = text;
+    stateCopy = { ...state };
+    stateCopy.newPostText = text;
   };
 
   let _zeroingPost = () => {
-    state.newPostText = "";
+    stateCopy = { ...state };
+    stateCopy.newPostText = "";
   };
 
   if (action.type === ADD_POST) {
@@ -36,7 +43,7 @@ const profilePageReducer = (state = initState, action) => {
     _updateNewPostText(action.text);
   }
 
-  return state;
+  return stateCopy;
 };
 
 export const addPostAC = () => {

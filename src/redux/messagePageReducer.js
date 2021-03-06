@@ -21,21 +21,32 @@ const initState = {
 };
 
 const messagePageReducer = (state = initState, action) => {
+  let stateCopy = initState;
   let _addMessage = () => {
-    let newMessage = {
-      id: state.messages.length + 1,
-      message: state.newMessageText,
+    stateCopy = {
+      ...state,
+      ...state.messages,
     };
-    state.messages.push(newMessage);
+    let newMessage = {
+      id: stateCopy.messages.length + 1,
+      message: stateCopy.newMessageText,
+    };
+    stateCopy.messages.push(newMessage);
     _zeroingMessage();
   };
 
   let _updateNewMessageText = (text) => {
-    state.newMessageText = text;
+    stateCopy = {
+      ...state,
+    };
+    stateCopy.newMessageText = text;
   };
 
   let _zeroingMessage = () => {
-    state.newMessageText = "";
+    stateCopy = {
+      ...state,
+    };
+    stateCopy.newMessageText = "";
   };
 
   if (action.type === ADD_MESSAGE) {
@@ -44,7 +55,7 @@ const messagePageReducer = (state = initState, action) => {
     _updateNewMessageText(action.text);
   }
 
-  return state;
+  return stateCopy;
 };
 
 export const sendMessageAC = () => {
