@@ -4,8 +4,11 @@ import axios from "axios";
 import UserItem from "./UserItem/UserItem";
 
 class UserItemComponent extends React.Component {
-  constructor(props) {
+  /*constructor(props) { // в таком виде конструктор можно не писать
     super(props);
+  }*/
+
+  componentDidMount() {
     axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((response) => {
