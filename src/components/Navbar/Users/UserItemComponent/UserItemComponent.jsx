@@ -1,21 +1,31 @@
 import React from "react";
 import style from "./UserItemComponent.module.css";
+import defaultAvatar from "../../../../assets/images/defaultAvatar.jpg";
+import axios from "axios";
 
 const UserItemComponent = (props) => {
-  debugger;
+  if (props.state.users.length === 0) {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        setUsers(response.data.items);
+      });
+  }
+
   let followButton = (id) => {
     props.follow(id);
   };
+
+  let setUsers = (users) => {
+    props.setUsers(users);
+  };
+
   return props.state.users.map((u) => {
     return (
       <UserItem
-        avatarPic={u.avatarPic}
-        firstName={u.firstName}
-        lastName={u.lastName}
-        county={u.county}
-        city={u.city}
-        about={u.about}
-        followStatus={u.followStatus}
+        photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
+        name={u.name}
+        status={u.status}
         followButton={() => followButton(u.id)}
         key={u.id}
         id={u.id}
@@ -28,15 +38,11 @@ const UserItem = (props) => {
   return (
     <div className={style.main}>
       <div className={style.avatarPic}>
-        <img src={props.avatarPic} alt="avatarPic" />
+        <img src={props.photosSmall} alt="avatarPic" />
       </div>
       <div className={style.about}>
-        <div>{props.firstName}</div>
-        <div>{props.lastName}</div>
-        <div>{props.county}</div>
-        <div>{props.city}</div>
-        <div>{props.about}</div>
-        <div>{props.followStatus}</div>
+        <div>{props.name}</div>
+        <div>{props.status}</div>
         <div>
           <button onClick={props.followButton}>
             {props.followStatus ? "unfollow" : "Follow"}
