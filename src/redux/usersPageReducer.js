@@ -1,41 +1,10 @@
 import defaultAvatar from "../assets/images/defaultAvatar.jpg";
 
 const FOLLOW_BUTTON = "FOLLOW_BUTTON";
-const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const SET_USERS = "SET_USERS";
 
 const initState = {
-  users: [
-    {
-      id: 1,
-      firstName: "BEEP",
-      lastName: "BOOP",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "Moscow",
-      about: "999",
-      followStatus: false,
-    },
-    {
-      id: 2,
-      firstName: "QQQ",
-      lastName: "WWW",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "1234",
-      about: "999",
-      followStatus: true,
-    },
-    {
-      id: 3,
-      firstName: "EEE",
-      lastName: "SSS",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "Kherov",
-      about: "999",
-      followStatus: false,
-    },
-  ],
+  users: [],
 };
 
 const usersPageReducer = (state = initState, action) => {
@@ -52,8 +21,14 @@ const usersPageReducer = (state = initState, action) => {
     });
   };
 
+  let _setUsers = (users) => {
+    stateCopy.users = [...users];
+  };
+
   if (action.type === FOLLOW_BUTTON) {
     _follow(action.id);
+  } else if (action.type === SET_USERS) {
+    _setUsers(action.users);
   }
 
   return stateCopy;
@@ -63,6 +38,13 @@ export const followButtonAC = (userID) => {
   return {
     type: FOLLOW_BUTTON,
     id: userID,
+  };
+};
+
+export const setUsersAC = (users) => {
+  return {
+    type: SET_USERS,
+    users: users,
   };
 };
 

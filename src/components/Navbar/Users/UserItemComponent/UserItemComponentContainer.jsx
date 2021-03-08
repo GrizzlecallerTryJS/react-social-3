@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import UserItemComponent from "./UserItemComponent";
-import { followButtonAC } from "../../../../redux/usersPageReducer";
+import { followButtonAC, setUsersAC } from "../../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
   return {
@@ -13,6 +13,9 @@ let mapDispatchToProps = (dispatch) => {
   return {
     follow: (id) => {
       dispatch(followButtonAC(id));
+    },
+    setUsers: (users) => {
+      dispatch(setUsersAC(users));
     },
   };
 };
