@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import UserItemComponent from "./UserItemComponent";
 import { followButtonAC, setUsersAC } from "../../../../redux/usersPageReducer";

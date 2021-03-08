@@ -1,4 +1,4 @@
-import defaultAvatar from "../assets/images/defaultAvatar.jpg";
+/*import defaultAvatar from "../assets/images/defaultAvatar.jpg";*/
 
 const FOLLOW_BUTTON = "FOLLOW_BUTTON";
 const SET_USERS = "SET_USERS";
@@ -13,11 +13,12 @@ const usersPageReducer = (state = initState, action) => {
   let _follow = (userID) => {
     stateCopy.users = [...state.users];
     stateCopy.users.map((u) => {
-      if (u.id === userID && u.followStatus === false) {
-        u.followStatus = true;
-      } else if (u.id === userID && u.followStatus === true) {
-        u.followStatus = false;
+      if (u.id === userID && u.followed === false) {
+        u.followed = true;
+      } else if (u.id === userID && u.followed === true) {
+        u.followed = false;
       }
+      return stateCopy;
     });
   };
 

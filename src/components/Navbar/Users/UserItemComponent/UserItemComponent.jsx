@@ -1,40 +1,16 @@
 import React from "react";
 import style from "./UserItemComponent.module.css";
 import defaultAvatar from "../../../../assets/images/defaultAvatar.jpg";
+import axios from "axios";
 
 const UserItemComponent = (props) => {
-  let users = [
-    {
-      id: 1,
-      firstName: "BEEP",
-      lastName: "BOOP",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "Moscow",
-      about: "999",
-      followStatus: false,
-    },
-    {
-      id: 2,
-      firstName: "QQQ",
-      lastName: "WWW",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "1234",
-      about: "999",
-      followStatus: true,
-    },
-    {
-      id: 3,
-      firstName: "EEE",
-      lastName: "SSS",
-      avatarPic: defaultAvatar,
-      county: "Russia",
-      city: "Kherov",
-      about: "999",
-      followStatus: false,
-    },
-  ];
+  if (props.state.users.length === 0) {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        setUsers(response.data.items);
+      });
+  }
 
   let followButton = (id) => {
     props.follow(id);
@@ -44,21 +20,12 @@ const UserItemComponent = (props) => {
     props.setUsers(users);
   };
 
-  if (props.state.users.length === 0) {
-    debugger;
-    setUsers(users);
-  }
-
   return props.state.users.map((u) => {
     return (
       <UserItem
-        avatarPic={u.avatarPic}
-        firstName={u.firstName}
-        lastName={u.lastName}
-        county={u.county}
-        city={u.city}
-        about={u.about}
-        followStatus={u.followStatus}
+        photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
+        name={u.name}
+        status={u.status}
         followButton={() => followButton(u.id)}
         key={u.id}
         id={u.id}
@@ -71,15 +38,11 @@ const UserItem = (props) => {
   return (
     <div className={style.main}>
       <div className={style.avatarPic}>
-        <img src={props.avatarPic} alt="avatarPic" />
+        <img src={props.photosSmall} alt="avatarPic" />
       </div>
       <div className={style.about}>
-        <div>{props.firstName}</div>
-        <div>{props.lastName}</div>
-        <div>{props.county}</div>
-        <div>{props.city}</div>
-        <div>{props.about}</div>
-        <div>{props.followStatus}</div>
+        <div>{props.name}</div>
+        <div>{props.status}</div>
         <div>
           <button onClick={props.followButton}>
             {props.followStatus ? "unfollow" : "Follow"}
