@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import UserItemComponent from "./UserItemComponent";
 import { followButtonAC, setUsersAC } from "../../../../redux/usersPageReducer";
+import UserItemComponent from "./UserItemComponent";
 
 let mapStateToProps = (state) => {
   return {

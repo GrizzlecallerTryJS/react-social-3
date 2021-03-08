@@ -1,56 +1,40 @@
 import React from "react";
-import style from "./UserItemComponent.module.css";
 import defaultAvatar from "../../../../assets/images/defaultAvatar.jpg";
 import axios from "axios";
+import UserItem from "./UserItem/UserItem";
 
-const UserItemComponent = (props) => {
-  if (props.state.users.length === 0) {
+class UserItemComponent extends React.Component {
+  constructor(props) {
+    super(props);
     axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((response) => {
-        setUsers(response.data.items);
+        this.setUsers(response.data.items);
       });
   }
 
-  let followButton = (id) => {
-    props.follow(id);
+  followButton = (id) => {
+    this.props.follow(id);
   };
 
-  let setUsers = (users) => {
-    props.setUsers(users);
+  setUsers = (users) => {
+    this.props.setUsers(users);
   };
 
-  return props.state.users.map((u) => {
-    return (
-      <UserItem
-        photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
-        name={u.name}
-        status={u.status}
-        followButton={() => followButton(u.id)}
-        key={u.id}
-        id={u.id}
-      />
-    );
-  });
-};
-
-const UserItem = (props) => {
-  return (
-    <div className={style.main}>
-      <div className={style.avatarPic}>
-        <img src={props.photosSmall} alt="avatarPic" />
-      </div>
-      <div className={style.about}>
-        <div>{props.name}</div>
-        <div>{props.status}</div>
-        <div>
-          <button onClick={props.followButton}>
-            {props.followStatus ? "unfollow" : "Follow"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
+  render() {
+    return this.props.state.users.map((u) => {
+      return (
+        <UserItem
+          photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
+          name={u.name}
+          status={u.status}
+          followButton={() => this.followButton(u.id)}
+          key={u.id}
+          id={u.id}
+        />
+      );
+    });
+  }
+}
 
 export default UserItemComponent;
