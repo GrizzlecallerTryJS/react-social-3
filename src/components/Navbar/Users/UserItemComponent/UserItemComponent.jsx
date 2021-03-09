@@ -27,14 +27,16 @@ class UserItemComponent extends React.Component {
   render() {
     return this.props.state.users.map((u) => {
       return (
-        <UserItem
-          photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
-          name={u.name}
-          status={u.status}
-          followButton={() => this.followButton(u.id)}
-          key={u.id}
-          id={u.id}
-        />
+        <div>
+          <UserItem
+            photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
+            name={u.name}
+            status={u.status}
+            followButton={() => this.followButton(u.id)}
+            key={u.id}
+            id={u.id}
+          />
+        </div>
       );
     });
   }
