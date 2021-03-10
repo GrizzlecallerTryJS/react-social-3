@@ -10,7 +10,9 @@ class UserItemComponent extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
+      )
       .then((response) => {
         this.setUsers(response.data.items);
       });

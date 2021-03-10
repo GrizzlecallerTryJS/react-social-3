@@ -3,6 +3,7 @@
 const FOLLOW_BUTTON = "FOLLOW_BUTTON";
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 const initState = {
   users: [],
@@ -35,6 +36,11 @@ const usersPageReducer = (state = initState, action) => {
     });
   };
 
+  let _setCurrentPage = (page) => {
+    debugger;
+    stateCopy.currentPage = page;
+  };
+
   let _setUsers = (users) => {
     stateCopy.users = [...users];
   };
@@ -45,6 +51,8 @@ const usersPageReducer = (state = initState, action) => {
     _setUsers(action.users);
   } else if (action.type === SET_TOTAL_PAGES) {
     _pagination(action.totalUsersCount, action.pageSize);
+  } else if (action.type === SET_CURRENT_PAGE) {
+    _setCurrentPage(action.page);
   }
 
   return stateCopy;
@@ -69,6 +77,13 @@ export const setTotalPagesAC = (totalUsersCount, pageSize) => {
     type: SET_TOTAL_PAGES,
     totalUsersCount: totalUsersCount,
     pageSize: pageSize,
+  };
+};
+
+export const setCurrentPageAC = (page) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    page: page,
   };
 };
 
