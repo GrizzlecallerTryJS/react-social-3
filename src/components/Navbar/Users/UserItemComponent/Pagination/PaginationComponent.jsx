@@ -6,7 +6,7 @@ class PaginationComponent extends React.Component {
   componentDidMount() {
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}`
       )
       .then((response) => {
         this.setTotalPages(response.data.totalCount);
@@ -25,6 +25,7 @@ class PaginationComponent extends React.Component {
           key={p}
           select={this.props.state.currentPage}
           setCurrentPage={this.props.setCurrentPage}
+          setUsers={this.props.setUsers}
         />
       );
     });

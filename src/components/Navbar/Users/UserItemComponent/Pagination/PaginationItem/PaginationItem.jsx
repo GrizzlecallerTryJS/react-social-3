@@ -3,14 +3,17 @@ import style from "./PaginationItem.module.css";
 import axios from "axios";
 
 const PaginationItem = (props) => {
-  debugger;
   let select = props.select;
 
   let setCurrentPage = () => {
     props.setCurrentPage(props.item);
     axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${select}`)
-      .then((response) => {});
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${props.item}`
+      )
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   };
 
   return (

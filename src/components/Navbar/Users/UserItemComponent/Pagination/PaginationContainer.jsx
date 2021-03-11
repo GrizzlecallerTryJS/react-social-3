@@ -1,6 +1,7 @@
 import {
   setCurrentPageAC,
   setTotalPagesAC,
+  setUsersAC,
 } from "../../../../../redux/usersPageReducer";
 import { connect } from "react-redux";
 import PaginationComponent from "./PaginationComponent";
@@ -18,6 +19,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     setCurrentPage: (page) => {
       dispatch(setCurrentPageAC(page));
+    },
+    setUsers: (users) => {
+      dispatch(setUsersAC(users));
     },
   };
 };

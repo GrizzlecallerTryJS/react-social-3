@@ -37,7 +37,6 @@ const usersPageReducer = (state = initState, action) => {
   };
 
   let _setCurrentPage = (page) => {
-    debugger;
     stateCopy.currentPage = page;
   };
 
