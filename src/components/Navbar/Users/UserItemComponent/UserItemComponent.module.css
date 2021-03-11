@@ -1,7 +1,7 @@
 .main {
   display: grid;
   grid-template-areas: "avatarPic about";
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 50px 1000px;
 }
 
 .avatarPic {

@@ -1,3 +1,14 @@
 .main {
-    background-color: #efedda;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas: "p p" "u u";
+  background-color: #efedda;
+}
+
+.pagination {
+  grid-area: p;
+}
+
+.users {
+  grid-area: u;
 }

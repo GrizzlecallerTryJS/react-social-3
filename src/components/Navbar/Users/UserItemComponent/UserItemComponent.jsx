@@ -10,7 +10,9 @@ class UserItemComponent extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
+      )
       .then((response) => {
         this.setUsers(response.data.items);
       });
@@ -27,14 +29,16 @@ class UserItemComponent extends React.Component {
   render() {
     return this.props.state.users.map((u) => {
       return (
-        <UserItem
-          photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
-          name={u.name}
-          status={u.status}
-          followButton={() => this.followButton(u.id)}
-          key={u.id}
-          id={u.id}
-        />
+        <div>
+          <UserItem
+            photosSmall={u.photos.small ? u.photos.small : defaultAvatar}
+            name={u.name}
+            status={u.status}
+            followButton={() => this.followButton(u.id)}
+            key={u.id}
+            id={u.id}
+          />
+        </div>
       );
     });
   }
