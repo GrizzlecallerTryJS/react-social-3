@@ -1,5 +1,4 @@
 import React from "react";
-/*import style from "./MessageComponent.module.css";*/
 import MessageItemComponent from "./MessageItemComponent/MessageItemComponent";
 
 const MessagesComponent = (props) => {
