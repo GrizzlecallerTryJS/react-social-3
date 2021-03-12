@@ -23,6 +23,18 @@ class Users extends React.Component {
     this.props.setUsers(users);
   };
 
+  setCurrentPageOnClick = (newCurrentPage) => {
+    debugger;
+    this.props.setCurrentPage(newCurrentPage);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
+  };
+
   render() {
     return (
       <div className={style.main}>
@@ -32,6 +44,7 @@ class Users extends React.Component {
             setCurrentPage={this.props.setCurrentPage}
             setUsers={this.props.setUsers}
             currentPage={this.props.currentPage}
+            setCurrentPageOnClick={this.setCurrentPageOnClick}
           />
         </div>
         <div className={style.users}>

@@ -10,6 +10,7 @@ let PaginationComponent = (props) => {
         select={props.currentPage}
         setCurrentPage={props.setCurrentPage}
         setUsers={props.setUsers}
+        setCurrentPageOnClick={props.setCurrentPageOnClick}
       />
     );
   });
