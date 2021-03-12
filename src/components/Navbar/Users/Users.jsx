@@ -1,30 +1,8 @@
 import React from "react";
-import UserItemComponentContainer from "./UserItemComponent/UserItemComponentContainer";
 import style from "./Users.module.css";
-import PaginationContainer from "./UserItemComponent/Pagination/PaginationContainer";
 import PaginationComponent from "./UserItemComponent/Pagination/PaginationComponent";
 import axios from "axios";
-
-/*const Users = (props) => {
-  return (
-    <div className={style.main}>
-      <div className={style.pagination}>
-        <PaginationComponent
-          setTotalPages={props.setTotalPages}
-          setCurrentPage={props.setCurrentPage}
-          setUsers={props.setUsers}
-          currentPage={props.currentPage}
-          totalUsersCount={props.totalUsersCount}
-          totalPages={props.totalPages}
-          users={props.users}
-        />
-      </div>
-      <div className={style.users}>
-        <UserItemComponentContainer />
-      </div>
-    </div>
-  );
-};*/
+import UserItemComponent from "./UserItemComponent/UserItemComponent";
 
 class Users extends React.Component {
   componentDidMount() {
@@ -57,7 +35,10 @@ class Users extends React.Component {
           />
         </div>
         <div className={style.users}>
-          <UserItemComponentContainer />
+          <UserItemComponent
+            followButton={this.props.followButton}
+            users={this.props.users}
+          />
         </div>
       </div>
     );

@@ -9,7 +9,6 @@ import Messages from "./components/Navbar/Messages/Messages";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-/*import Users from "./components/Navbar/Users/Users";*/
 import UsersContainer from "./components/Navbar/Users/UsersContainer";
 
 const App = (props) => {

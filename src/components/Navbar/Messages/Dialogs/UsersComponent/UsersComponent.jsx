@@ -1,6 +1,4 @@
 import React from "react";
-/*import style from "./UsersComponent.module.css";
-import { NavLink } from "react-router-dom";*/
 
 import UsersItemComponent from "./UsersItemComponent/UsersItemComponent";
 

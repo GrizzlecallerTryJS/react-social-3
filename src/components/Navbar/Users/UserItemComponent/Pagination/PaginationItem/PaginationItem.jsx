@@ -3,7 +3,6 @@ import style from "./PaginationItem.module.css";
 import axios from "axios";
 
 const PaginationItem = (props) => {
-  debugger;
   let select = props.select;
 
   let setCurrentPage = () => {
