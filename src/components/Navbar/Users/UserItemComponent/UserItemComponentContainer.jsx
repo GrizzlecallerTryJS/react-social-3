@@ -4,7 +4,7 @@ import UserItemComponent from "./UserItemComponent";
 
 let mapStateToProps = (state) => {
   return {
-    state: state.usersPageReducer,
+    users: state.usersPageReducer.users,
   };
 };
 

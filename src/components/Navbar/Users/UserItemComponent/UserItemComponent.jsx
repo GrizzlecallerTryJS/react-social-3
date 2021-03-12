@@ -27,7 +27,7 @@ class UserItemComponent extends React.Component {
   };
 
   render() {
-    return this.props.state.users.map((u) => {
+    return this.props.users.map((u) => {
       return (
         <div>
           <UserItem

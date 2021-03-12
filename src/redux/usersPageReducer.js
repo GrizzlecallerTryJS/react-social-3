@@ -17,6 +17,7 @@ const usersPageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
 
   let _pagination = (totalUsersCount, pageSize) => {
+    debugger;
     let total = Math.ceil(totalUsersCount / pageSize);
     stateCopy.totalUsersCount = totalUsersCount;
     for (let i = 1; i <= total; i++) {
@@ -26,6 +27,7 @@ const usersPageReducer = (state = initState, action) => {
 
   let _follow = (userID) => {
     stateCopy.users = [...state.users];
+    debugger;
     stateCopy.users.map((u) => {
       if (u.id === userID && u.followed === false) {
         u.followed = true;
