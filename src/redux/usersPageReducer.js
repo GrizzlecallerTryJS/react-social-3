@@ -65,21 +65,21 @@ const usersPageReducer = (state = initState, action) => {
   return stateCopy;
 };
 
-export const followButtonAC = (userID) => {
+export const followButton = (userID) => {
   return {
     type: FOLLOW_BUTTON,
     id: userID,
   };
 };
 
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
   return {
     type: SET_USERS,
     users: users,
   };
 };
 
-export const setTotalPagesAC = (totalUsersCount, pageSize) => {
+export const setTotalPages = (totalUsersCount, pageSize) => {
   return {
     type: SET_TOTAL_PAGES,
     totalUsersCount: totalUsersCount,
@@ -87,14 +87,14 @@ export const setTotalPagesAC = (totalUsersCount, pageSize) => {
   };
 };
 
-export const setCurrentPageAC = (page) => {
+export const setCurrentPage = (page) => {
   return {
     type: SET_CURRENT_PAGE,
     page: page,
   };
 };
 
-export const setIsFetchingAC = (isFetching) => {
+export const setIsFetching = (isFetching) => {
   return {
     type: SET_IS_FETCHING,
     isFetching: isFetching,
