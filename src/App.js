@@ -1,7 +1,6 @@
 import React from "react";
 
 import style from "./App.module.css";
-import Profile from "./components/Profile/Profile";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import { Route } from "react-router-dom";
@@ -10,6 +9,7 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 import UsersContainer from "./components/Navbar/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
   /*  const ProfileComponent = () => {
@@ -17,7 +17,7 @@ const App = (props) => {
   };*/
 
   const ProfileComponent = () => {
-    return <Profile />;
+    return <ProfileContainer />;
   };
 
   /*const MessagesComponent = () => {

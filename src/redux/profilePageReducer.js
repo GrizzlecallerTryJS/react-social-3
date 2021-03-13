@@ -1,7 +1,9 @@
 import defaultImage from "../assets/images/defaultImage.png";
+import defaultAvatar from "../assets/images/defaultAvatar.jpg";
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const SET_PROFILE = "SET_PROFILE";
 
 const initState = {
   posts: [
@@ -9,6 +11,15 @@ const initState = {
     { id: 2, message: "BOOP", image: defaultImage },
   ],
   newPostText: "ddd5",
+  profile: {
+    aboutMe: "aboutMe",
+    fullName: "fullName",
+    userId: 8184,
+    photos: {
+      small: defaultAvatar,
+      large: defaultAvatar,
+    },
+  },
 };
 
 const profilePageReducer = (state = initState, action) => {
@@ -34,25 +45,39 @@ const profilePageReducer = (state = initState, action) => {
     stateCopy.newPostText = "";
   };
 
+  let _setProfile = (profile) => {
+    debugger;
+    stateCopy.profile = { ...profile };
+  };
+
   if (action.type === ADD_POST) {
     _addPost();
   } else if (action.type === UPDATE_NEW_POST_TEXT) {
     _updateNewPostText(action.text);
+  } else if (action.type === SET_PROFILE) {
+    _setProfile(action.profile);
   }
 
   return stateCopy;
 };
 
-export const addPostAC = () => {
+export const addPost = () => {
   return {
     type: ADD_POST,
   };
 };
 
-export const onPostChangeAC = (text) => {
+export const onPostChange = (text) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
     text: text,
+  };
+};
+
+export const setProfile = (profile) => {
+  return {
+    type: SET_PROFILE,
+    profile: profile,
   };
 };
 

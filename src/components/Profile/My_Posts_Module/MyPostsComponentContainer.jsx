@@ -1,5 +1,5 @@
 import MyPostsComponent from "./MyPostsComponent";
-import { addPostAC, onPostChangeAC } from "../../../redux/profilePageReducer";
+import { addPost, onPostChange } from "../../../redux/profilePageReducer";
 
 import { connect } from "react-redux";
 
@@ -12,10 +12,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     addPost: () => {
-      dispatch(addPostAC());
+      dispatch(addPost());
     },
     onPostChange: (text) => {
-      dispatch(onPostChangeAC(text));
+      dispatch(onPostChange(text));
     },
   };
 };
