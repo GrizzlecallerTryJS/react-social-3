@@ -4,6 +4,7 @@ const FOLLOW_BUTTON = "FOLLOW_BUTTON";
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_IS_FETCHING = "SET_IS_FETCHING";
 
 const initState = {
   users: [],
@@ -11,6 +12,7 @@ const initState = {
   totalUsersCount: 24,
   currentPage: 1,
   totalPages: [1, 2, 3],
+  isFetching: false,
 };
 
 const usersPageReducer = (state = initState, action) => {
@@ -44,6 +46,10 @@ const usersPageReducer = (state = initState, action) => {
     stateCopy.users = [...users];
   };
 
+  let _setIsFetching = (isFetching) => {
+    stateCopy.isFetching = isFetching;
+  };
+
   if (action.type === FOLLOW_BUTTON) {
     _follow(action.id);
   } else if (action.type === SET_USERS) {
@@ -52,6 +58,8 @@ const usersPageReducer = (state = initState, action) => {
     _pagination(action.totalUsersCount, action.pageSize);
   } else if (action.type === SET_CURRENT_PAGE) {
     _setCurrentPage(action.page);
+  } else if (action.type === SET_IS_FETCHING) {
+    _setIsFetching(action.isFetching);
   }
 
   return stateCopy;
@@ -83,6 +91,13 @@ export const setCurrentPageAC = (page) => {
   return {
     type: SET_CURRENT_PAGE,
     page: page,
+  };
+};
+
+export const setIsFetchingAC = (isFetching) => {
+  return {
+    type: SET_IS_FETCHING,
+    isFetching: isFetching,
   };
 };
 
