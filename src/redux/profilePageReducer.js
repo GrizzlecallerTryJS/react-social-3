@@ -15,10 +15,22 @@ const initState = {
     aboutMe: "aboutMe",
     fullName: "fullName",
     userId: 8184,
+    contacts: [
+      { facebook: null },
+      { website: null },
+      { vk: null },
+      { twitter: null },
+      { instagram: null },
+      { youtube: null },
+      { github: null },
+      { mainLink: null },
+    ],
     photos: {
       small: defaultAvatar,
       large: defaultAvatar,
     },
+    lookingForAJob: true,
+    lookingForAJobDescription: "не ищу, а дурачусь",
   },
 };
 
@@ -46,8 +58,7 @@ const profilePageReducer = (state = initState, action) => {
   };
 
   let _setProfile = (profile) => {
-    debugger;
-    stateCopy.profile = { ...profile };
+    stateCopy.profile = { ...profile, contacts: profile.contacts };
   };
 
   if (action.type === ADD_POST) {

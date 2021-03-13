@@ -4,21 +4,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import axios from "axios";
 import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
 
-/*
-const Profile = (props) => {
-  return (
-    <div className={style.content}>
-      <div className={style.profileInfo}>
-        <ProfileInfo profileInfo={props.profile} />
-      </div>
-      <div className={style.myPosts}>
-        <MyPostsComponentContainer />
-      </div>
-    </div>
-  );
-};
-*/
-
 class Profile extends React.Component {
   componentDidMount() {
     axios
@@ -27,7 +12,6 @@ class Profile extends React.Component {
         this.props.setProfile(response.data);
       });
   }
-  debugger;
 
   render() {
     return (
