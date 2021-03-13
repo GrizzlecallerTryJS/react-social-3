@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import {
-  followButtonAC,
-  setCurrentPageAC,
-  setIsFetchingAC,
-  setTotalPagesAC,
-  setUsersAC,
+  followButton,
+  setCurrentPage,
+  setIsFetching,
+  setTotalPages,
+  setUsers,
 } from "../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
@@ -20,7 +20,7 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+/*let mapDispatchToProps = (dispatch) => {
   return {
     followButton: (id) => {
       dispatch(followButtonAC(id));
@@ -38,6 +38,16 @@ let mapDispatchToProps = (dispatch) => {
       dispatch(setIsFetchingAC(isFetching));
     },
   };
+};*/
+
+//Объект с actionCreator
+
+let acObject = {
+  followButton,
+  setUsers,
+  setTotalPages,
+  setCurrentPage,
+  setIsFetching,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps, acObject)(Users);
