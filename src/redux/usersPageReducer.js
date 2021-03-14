@@ -1,10 +1,11 @@
 /*import defaultAvatar from "../assets/images/defaultAvatar.jpg";*/
 
-const FOLLOW_BUTTON = "FOLLOW_BUTTON";
+/*const FOLLOW_BUTTON = "FOLLOW_BUTTON";*/
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_IS_FETCHING = "SET_IS_FETCHING";
+const SET_FOLLOW_STATUS = "SET_FOLLOW_STATUS";
 
 const initState = {
   users: [],
@@ -13,6 +14,7 @@ const initState = {
   currentPage: 1,
   totalPages: [1, 2, 3],
   isFetching: false,
+  forReload: 0,
 };
 
 const usersPageReducer = (state = initState, action) => {
@@ -26,7 +28,9 @@ const usersPageReducer = (state = initState, action) => {
     }
   };
 
-  let _follow = (userID) => {
+  //OLD
+
+  /*  let _follow = (userID) => {
     stateCopy.users = [...state.users];
     stateCopy.users.map((u) => {
       if (u.id === userID && u.followed === false) {
@@ -36,6 +40,15 @@ const usersPageReducer = (state = initState, action) => {
       }
       return stateCopy;
     });
+  };*/
+
+  let _setFollowStatus = (id, status) => {
+    stateCopy.users.map((u) => {
+      if (u.id === id) {
+        u.followed = status;
+      }
+    });
+    stateCopy.forReload += 1;
   };
 
   let _setCurrentPage = (page) => {
@@ -50,9 +63,13 @@ const usersPageReducer = (state = initState, action) => {
     stateCopy.isFetching = isFetching;
   };
 
-  if (action.type === FOLLOW_BUTTON) {
+  //OLD
+
+  /*if (action.type === FOLLOW_BUTTON) {
     _follow(action.id);
-  } else if (action.type === SET_USERS) {
+  } else*/
+
+  if (action.type === SET_USERS) {
     _setUsers(action.users);
   } else if (action.type === SET_TOTAL_PAGES) {
     _pagination(action.totalUsersCount, action.pageSize);
@@ -60,17 +77,21 @@ const usersPageReducer = (state = initState, action) => {
     _setCurrentPage(action.page);
   } else if (action.type === SET_IS_FETCHING) {
     _setIsFetching(action.isFetching);
+  } else if (action.type === SET_FOLLOW_STATUS) {
+    _setFollowStatus(action.id, action.status);
   }
 
   return stateCopy;
 };
 
-export const followButton = (userID) => {
+//OLD
+
+/*export const followButton = (userID) => {
   return {
     type: FOLLOW_BUTTON,
     id: userID,
   };
-};
+};*/
 
 export const setUsers = (users) => {
   return {
@@ -98,6 +119,14 @@ export const setIsFetching = (isFetching) => {
   return {
     type: SET_IS_FETCHING,
     isFetching: isFetching,
+  };
+};
+
+export const setFollowStatus = (id, status) => {
+  return {
+    type: SET_FOLLOW_STATUS,
+    id,
+    status,
   };
 };
 

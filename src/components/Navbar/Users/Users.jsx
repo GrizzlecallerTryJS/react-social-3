@@ -10,7 +10,13 @@ class Users extends React.Component {
     this.props.setIsFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`,
+        {
+          withCredentials: true,
+          headers: {
+            "API-KEY": "c3ab2b38-91ca-4335-a97b-5c1d92e21288",
+          },
+        }
       )
       .then((response) => {
         this.props.setIsFetching(false);
@@ -31,12 +37,52 @@ class Users extends React.Component {
     this.props.setCurrentPage(newCurrentPage);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`,
+        {
+          withCredentials: true,
+          headers: {
+            "API-KEY": "c3ab2b38-91ca-4335-a97b-5c1d92e21288",
+          },
+        }
       )
       .then((response) => {
         this.props.setIsFetching(false);
         this.props.setUsers(response.data.items);
       });
+  };
+
+  setFollowStatus = (id, status) => {
+    if (status) {
+      axios
+        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+          withCredentials: true,
+          headers: {
+            "API-KEY": "c3ab2b38-91ca-4335-a97b-5c1d92e21288",
+          },
+        })
+        .then((response) => {
+          if (response.data.resultCode === 0) {
+            this.props.setFollowStatus(id, false);
+          }
+        });
+    } else {
+      axios
+        .post(
+          `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
+          {},
+          {
+            withCredentials: true,
+            headers: {
+              "API-KEY": "c3ab2b38-91ca-4335-a97b-5c1d92e21288",
+            },
+          }
+        )
+        .then((response) => {
+          if (response.data.resultCode === 0) {
+            this.props.setFollowStatus(id, true);
+          }
+        });
+    }
   };
 
   render() {
@@ -55,8 +101,8 @@ class Users extends React.Component {
           </div>
           <div className={style.users}>
             <UserItemComponent
-              followButton={this.props.followButton}
               users={this.props.users}
+              setFollowStatus={this.setFollowStatus}
             />
           </div>
         </div>

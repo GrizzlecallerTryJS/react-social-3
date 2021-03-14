@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import {
-  followButton,
   setCurrentPage,
   setIsFetching,
   setTotalPages,
   setUsers,
+  setFollowStatus,
 } from "../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
@@ -17,6 +17,7 @@ let mapStateToProps = (state) => {
     totalUsersCount: state.usersPageReducer.totalUsersCount,
     pageSize: state.usersPageReducer.pageSize,
     isFetching: state.usersPageReducer.isFetching,
+    forReload: state.usersPageReducer.forReload,
   };
 };
 
@@ -43,11 +44,11 @@ let mapStateToProps = (state) => {
 //Объект с actionCreator
 
 let acObject = {
-  followButton,
   setUsers,
   setTotalPages,
   setCurrentPage,
   setIsFetching,
+  setFollowStatus,
 };
 
 export default connect(mapStateToProps, acObject)(Users);
