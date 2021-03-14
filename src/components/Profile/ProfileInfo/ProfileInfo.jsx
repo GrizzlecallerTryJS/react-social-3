@@ -19,6 +19,7 @@ const ProfileInfo = (props) => {
           )}
         </div>
         <div className={style.profile_info}>
+          <p>{props.profileInfo.fullName}</p>
           <ProfileInfoContacts info={props.profileInfo.contacts} />
           {props.profileInfo.lookingForAJob}
           {props.profileInfo.lookingForAJobDescription}
