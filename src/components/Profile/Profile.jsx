@@ -6,7 +6,6 @@ import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
 
 class Profile extends React.Component {
   componentDidMount() {
-    debugger;
     let userID;
 
     if (this.props.match.params.userID) {

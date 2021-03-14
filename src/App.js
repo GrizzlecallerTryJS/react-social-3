@@ -1,7 +1,6 @@
 import React from "react";
 
 import style from "./App.module.css";
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import { Route } from "react-router-dom";
 import Messages from "./components/Navbar/Messages/Messages";
@@ -10,6 +9,7 @@ import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 import UsersContainer from "./components/Navbar/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
   /*  const ProfileComponent = () => {
@@ -46,7 +46,7 @@ const App = (props) => {
 
   return (
     <div className={style.app_wrapper}>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <Route path="/profile/:userID?" render={ProfileComponent} />
       <Route exact path="/messages" render={MessagesComponent} />
