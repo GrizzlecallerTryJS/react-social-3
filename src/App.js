@@ -48,8 +48,7 @@ const App = (props) => {
     <div className={style.app_wrapper}>
       <Header />
       <Navbar />
-
-      <Route path="/profile" render={ProfileComponent} />
+      <Route path="/profile/:userID?" render={ProfileComponent} />
       <Route exact path="/messages" render={MessagesComponent} />
       <Route path="/news" render={NewsComponent} />
       <Route path="/music" render={MusicComponent} />

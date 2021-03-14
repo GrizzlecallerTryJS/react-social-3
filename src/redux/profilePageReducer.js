@@ -30,7 +30,7 @@ const initState = {
       large: defaultAvatar,
     },
     lookingForAJob: true,
-    lookingForAJobDescription: "не ищу, а дурачусь",
+    lookingForAJobDescription: null,
   },
 };
 

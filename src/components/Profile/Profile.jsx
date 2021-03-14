@@ -6,8 +6,17 @@ import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
 
 class Profile extends React.Component {
   componentDidMount() {
+    debugger;
+    let userID;
+
+    if (this.props.match.params.userID) {
+      userID = this.props.match.params.userID;
+    } else {
+      userID = 2;
+    }
+
     axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`)
       .then((response) => {
         this.props.setProfile(response.data);
       });

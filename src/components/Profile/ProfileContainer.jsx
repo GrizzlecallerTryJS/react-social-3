@@ -7,6 +7,8 @@ import {
   setProfile,
 } from "../../redux/profilePageReducer";
 
+import { withRouter } from "react-router-dom";
+
 let mapStateToProps = (state) => {
   return {
     posts: state.profilePageReducer.posts,
@@ -21,4 +23,6 @@ let acObject = {
   setProfile,
 };
 
-export default connect(mapStateToProps, acObject)(Profile);
+let profileWithRouter = withRouter(Profile);
+
+export default connect(mapStateToProps, acObject)(profileWithRouter);
