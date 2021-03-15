@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import axios from "axios";
 import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
+import { getUserProfile } from "../../api/api";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -14,11 +14,9 @@ class Profile extends React.Component {
       userID = 2;
     }
 
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`)
-      .then((response) => {
-        this.props.setProfile(response.data);
-      });
+    getUserProfile(userID).then((data) => {
+      this.props.setProfile(data);
+    });
   }
 
   render() {
