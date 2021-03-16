@@ -37,15 +37,18 @@ class Users extends React.Component {
   };
 
   setFollowStatus = (id, status) => {
+    this.props.setFollowingInProgress(id, true);
     if (status) {
       setFollowStatusFalse(id).then((data) => {
         if (data.resultCode === 0) {
+          this.props.setFollowingInProgress(id, false);
           this.props.setFollowStatus(id, false);
         }
       });
     } else {
       setFollowStatusTrue(id).then((data) => {
         if (data.resultCode === 0) {
+          this.props.setFollowingInProgress(id, false);
           this.props.setFollowStatus(id, true);
         }
       });
@@ -70,6 +73,7 @@ class Users extends React.Component {
             <UserItemComponent
               users={this.props.users}
               setFollowStatus={this.setFollowStatus}
+              followingInProgress={this.props.followingInProgress}
             />
           </div>
         </div>

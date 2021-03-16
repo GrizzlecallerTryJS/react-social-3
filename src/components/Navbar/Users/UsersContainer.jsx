@@ -7,6 +7,7 @@ import {
   setTotalPages,
   setUsers,
   setFollowStatus,
+  setFollowingInProgress,
 } from "../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
@@ -18,6 +19,7 @@ let mapStateToProps = (state) => {
     pageSize: state.usersPageReducer.pageSize,
     isFetching: state.usersPageReducer.isFetching,
     forReload: state.usersPageReducer.forReload,
+    followingInProgress: state.usersPageReducer.followingInProgress,
   };
 };
 
@@ -49,6 +51,7 @@ let acObject = {
   setCurrentPage,
   setIsFetching,
   setFollowStatus,
+  setFollowingInProgress,
 };
 
 export default connect(mapStateToProps, acObject)(Users);

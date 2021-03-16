@@ -6,6 +6,7 @@ const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_IS_FETCHING = "SET_IS_FETCHING";
 const SET_FOLLOW_STATUS = "SET_FOLLOW_STATUS";
+const SET_FOLLOWING_IN_PROGRESS = "SET_FOLLOWING_IN_PROGRESS";
 
 const initState = {
   users: [],
@@ -15,10 +16,11 @@ const initState = {
   totalPages: [1, 2, 3],
   isFetching: false,
   forReload: 0,
+  followingInProgress: [],
 };
 
 const usersPageReducer = (state = initState, action) => {
-  let stateCopy = { ...state };
+  let stateCopy = state;
 
   let _pagination = (totalUsersCount, pageSize) => {
     let total = Math.ceil(totalUsersCount / pageSize);
@@ -27,20 +29,6 @@ const usersPageReducer = (state = initState, action) => {
       stateCopy.totalPages[i - 1] = i;
     }
   };
-
-  //OLD
-
-  /*  let _follow = (userID) => {
-    stateCopy.users = [...state.users];
-    stateCopy.users.map((u) => {
-      if (u.id === userID && u.followed === false) {
-        u.followed = true;
-      } else if (u.id === userID && u.followed === true) {
-        u.followed = false;
-      }
-      return stateCopy;
-    });
-  };*/
 
   let _setFollowStatus = (id, status) => {
     stateCopy.users.map((u) => {
@@ -63,11 +51,26 @@ const usersPageReducer = (state = initState, action) => {
     stateCopy.isFetching = isFetching;
   };
 
-  //OLD
-
-  /*if (action.type === FOLLOW_BUTTON) {
-    _follow(action.id);
-  } else*/
+  let _setFollowingInProgress = (id, status) => {
+    /*if (status) {
+      stateCopy.followingInProgress = [...state.followingInProgress, id];
+    } else {
+      stateCopy.followingInProgress = [
+        ...state.followingInProgress.filter((userID) => userID !== id),
+      ];
+    }*/
+    /*status
+      ? (stateCopy.followingInProgress = [...state.followingInProgress, id])
+      : (stateCopy.followingInProgress = [
+          ...state.followingInProgress.filter((userID) => userID !== id),
+        ]);*/
+    stateCopy = {
+      ...state,
+      followingInProgress: status
+        ? [...state.followingInProgress, id]
+        : [...state.followingInProgress.filter((userID) => userID !== id)],
+    };
+  };
 
   if (action.type === SET_USERS) {
     _setUsers(action.users);
@@ -79,19 +82,12 @@ const usersPageReducer = (state = initState, action) => {
     _setIsFetching(action.isFetching);
   } else if (action.type === SET_FOLLOW_STATUS) {
     _setFollowStatus(action.id, action.status);
+  } else if (action.type === SET_FOLLOWING_IN_PROGRESS) {
+    _setFollowingInProgress(action.id, action.status);
   }
 
   return stateCopy;
 };
-
-//OLD
-
-/*export const followButton = (userID) => {
-  return {
-    type: FOLLOW_BUTTON,
-    id: userID,
-  };
-};*/
 
 export const setUsers = (users) => {
   return {
@@ -125,6 +121,14 @@ export const setIsFetching = (isFetching) => {
 export const setFollowStatus = (id, status) => {
   return {
     type: SET_FOLLOW_STATUS,
+    id,
+    status,
+  };
+};
+
+export const setFollowingInProgress = (id, status) => {
+  return {
+    type: SET_FOLLOWING_IN_PROGRESS,
     id,
     status,
   };
