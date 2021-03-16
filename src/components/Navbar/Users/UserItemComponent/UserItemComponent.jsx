@@ -20,8 +20,8 @@ let UserItemComponent = (props) => {
           setFollowStatus={() => setFollowStatus(u.id, u.followed)}
           key={u.id}
           id={u.id}
-          followStatus={u.followed}
           buttonPresentStatus={buttonPresentStatus}
+          followingInProgress={props.followingInProgress}
         />
       </div>
     );
