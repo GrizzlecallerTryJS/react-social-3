@@ -1,5 +1,6 @@
 import defaultImage from "../assets/images/defaultImage.png";
 import defaultAvatar from "../assets/images/defaultAvatar.jpg";
+import userAPI from "../api/api";
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -93,3 +94,10 @@ export const setProfile = (profile) => {
 };
 
 export default profilePageReducer;
+
+export const setUserProfile = (userID) => {
+  return (dispatch) =>
+    userAPI.getUserProfile(userID).then((data) => {
+      dispatch(setProfile(data));
+    });
+};

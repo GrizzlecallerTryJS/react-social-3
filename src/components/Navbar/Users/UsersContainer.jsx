@@ -3,13 +3,11 @@ import { connect } from "react-redux";
 import Users from "./Users";
 import {
   setCurrentPage,
-  setIsFetching,
-  setTotalPages,
   setUsers,
-  setFollowStatus,
   setFollowingInProgress,
   getUsersThunkCreator,
   setCurrentPageOnClick,
+  setFollowStatusThunkCreator,
 } from "../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
@@ -17,10 +15,8 @@ let mapStateToProps = (state) => {
     users: state.usersPageReducer.users,
     totalPages: state.usersPageReducer.totalPages,
     currentPage: state.usersPageReducer.currentPage,
-    totalUsersCount: state.usersPageReducer.totalUsersCount,
     pageSize: state.usersPageReducer.pageSize,
-    isFetching: state.usersPageReducer.isFetching,
-    forReload: state.usersPageReducer.forReload,
+    /*forReload: state.usersPageReducer.forReload,*/
     followingInProgress: state.usersPageReducer.followingInProgress,
   };
 };
@@ -49,13 +45,11 @@ let mapStateToProps = (state) => {
 
 let acObject = {
   setUsers,
-  setTotalPages,
   setCurrentPage,
-  setIsFetching,
-  setFollowStatus,
   setFollowingInProgress,
   getUsersThunkCreator,
   setCurrentPageOnClick,
+  setFollowStatusThunkCreator,
 };
 
 export default connect(mapStateToProps, acObject)(Users);

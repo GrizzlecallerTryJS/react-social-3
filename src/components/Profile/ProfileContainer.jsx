@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   addPost,
   onPostChange,
-  setProfile,
+  setUserProfile,
 } from "../../redux/profilePageReducer";
 
 import { withRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ let mapStateToProps = (state) => {
 let acObject = {
   addPost,
   onPostChange,
-  setProfile,
+  setUserProfile,
 };
 
 let profileWithRouter = withRouter(Profile);

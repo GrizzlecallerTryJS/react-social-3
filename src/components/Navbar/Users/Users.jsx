@@ -3,62 +3,15 @@ import style from "./Users.module.css";
 import PaginationComponent from "./UserItemComponent/Pagination/PaginationComponent";
 import UserItemComponent from "./UserItemComponent/UserItemComponent";
 import Preloader from "../../../assets/preloader/Preloader";
-import {
-  getUsers,
-  setFollowStatusFalse,
-  setFollowStatusTrue,
-} from "../../../api/api";
+import { setCurrentPageOnClick } from "../../../redux/usersPageReducer";
 
 class Users extends React.Component {
   componentDidMount() {
-    /*this.props.setIsFetching(true);
-    getUsers(this.props.currentPage).then((data) => {
-      this.props.setIsFetching(false);
-      this.setTotalPages(data.totalCount);
-      this.setUsers(data.items);
-    });*/
-
     this.props.getUsersThunkCreator(
       this.props.currentPage,
       this.props.pageSize
     );
   }
-
-  /*setTotalPages = (totalUsersCount, pageSize = this.props.pageSize) => {
-    this.props.setTotalPages(totalUsersCount, pageSize);
-  };
-  setUsers = (users) => {
-    this.props.setUsers(users);
-  };*/
-
-  /*setCurrentPageOnClick = (newCurrentPage) => {
-    this.props.setIsFetching(true);
-    this.props.setCurrentPage(newCurrentPage);
-
-    getUsers(newCurrentPage).then((data) => {
-      this.props.setIsFetching(false);
-      this.props.setUsers(data.items);
-    });
-  };*/
-
-  setFollowStatus = (id, status) => {
-    this.props.setFollowingInProgress(id, true);
-    if (status) {
-      setFollowStatusFalse(id).then((data) => {
-        if (data.resultCode === 0) {
-          this.props.setFollowingInProgress(id, false);
-          this.props.setFollowStatus(id, false);
-        }
-      });
-    } else {
-      setFollowStatusTrue(id).then((data) => {
-        if (data.resultCode === 0) {
-          this.props.setFollowingInProgress(id, false);
-          this.props.setFollowStatus(id, true);
-        }
-      });
-    }
-  };
 
   render() {
     return (
@@ -77,7 +30,7 @@ class Users extends React.Component {
           <div className={style.users}>
             <UserItemComponent
               users={this.props.users}
-              setFollowStatus={this.setFollowStatus}
+              setFollowStatus={this.props.setFollowStatusThunkCreator}
               followingInProgress={this.props.followingInProgress}
             />
           </div>
