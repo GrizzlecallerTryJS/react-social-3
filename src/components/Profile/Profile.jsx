@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
-import { getUserProfile } from "../../api/api";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -14,9 +13,7 @@ class Profile extends React.Component {
       userID = 2;
     }
 
-    getUserProfile(userID).then((data) => {
-      this.props.setProfile(data);
-    });
+    this.props.setUserProfile(userID);
   }
 
   render() {

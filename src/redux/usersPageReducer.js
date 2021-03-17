@@ -1,6 +1,5 @@
-/*import defaultAvatar from "../assets/images/defaultAvatar.jpg";*/
+import userAPI from "../api/api";
 
-/*const FOLLOW_BUTTON = "FOLLOW_BUTTON";*/
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -10,7 +9,7 @@ const SET_FOLLOWING_IN_PROGRESS = "SET_FOLLOWING_IN_PROGRESS";
 
 const initState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 24,
   currentPage: 1,
   totalPages: [1, 2, 3],
@@ -52,18 +51,6 @@ const usersPageReducer = (state = initState, action) => {
   };
 
   let _setFollowingInProgress = (id, status) => {
-    /*if (status) {
-      stateCopy.followingInProgress = [...state.followingInProgress, id];
-    } else {
-      stateCopy.followingInProgress = [
-        ...state.followingInProgress.filter((userID) => userID !== id),
-      ];
-    }*/
-    /*status
-      ? (stateCopy.followingInProgress = [...state.followingInProgress, id])
-      : (stateCopy.followingInProgress = [
-          ...state.followingInProgress.filter((userID) => userID !== id),
-        ]);*/
     stateCopy = {
       ...state,
       followingInProgress: status
@@ -131,6 +118,44 @@ export const setFollowingInProgress = (id, status) => {
     type: SET_FOLLOWING_IN_PROGRESS,
     id,
     status,
+  };
+};
+
+//-----------------//
+//ThunkCreators
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    userAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(setIsFetching(false));
+      dispatch(setTotalPages(data.totalCount, pageSize));
+      dispatch(setUsers(data.items));
+    });
+  };
+};
+
+export const setCurrentPageOnClick = (newCurrentPage) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    dispatch(setCurrentPage(newCurrentPage));
+    userAPI.getUsers(newCurrentPage).then((data) => {
+      dispatch(setIsFetching(false));
+      dispatch(setUsers(data.items));
+    });
+  };
+};
+
+export const setFollowStatusThunkCreator = (id, status) => {
+  return (dispatch) => {
+    dispatch(setFollowingInProgress(id, true));
+    userAPI.setFollowStatus(id, status).then((data) => {
+      debugger;
+      if (data.resultCode === 0) {
+        dispatch(setFollowStatus(id, status));
+        dispatch(setFollowingInProgress(id, false));
+      }
+    });
   };
 };
 

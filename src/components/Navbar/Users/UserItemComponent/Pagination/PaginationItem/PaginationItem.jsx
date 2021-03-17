@@ -10,7 +10,7 @@ const PaginationItem = (props) => {
   return (
     <span
       onClick={setCurrentPageOnClick}
-      className={props.item === select && style.item}
+      className={props.item === select ? style.item : undefined}
     >
       {props.item}
     </span>
