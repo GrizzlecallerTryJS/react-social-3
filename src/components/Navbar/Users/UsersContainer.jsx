@@ -16,7 +16,6 @@ let mapStateToProps = (state) => {
     totalPages: state.usersPageReducer.totalPages,
     currentPage: state.usersPageReducer.currentPage,
     pageSize: state.usersPageReducer.pageSize,
-    /*forReload: state.usersPageReducer.forReload,*/
     followingInProgress: state.usersPageReducer.followingInProgress,
   };
 };
