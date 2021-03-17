@@ -1,6 +1,8 @@
 /*import defaultAvatar from "../assets/images/defaultAvatar.jpg";*/
 
 /*const FOLLOW_BUTTON = "FOLLOW_BUTTON";*/
+import { getUsers } from "../api/api";
+
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -10,7 +12,7 @@ const SET_FOLLOWING_IN_PROGRESS = "SET_FOLLOWING_IN_PROGRESS";
 
 const initState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 24,
   currentPage: 1,
   totalPages: [1, 2, 3],
@@ -131,6 +133,31 @@ export const setFollowingInProgress = (id, status) => {
     type: SET_FOLLOWING_IN_PROGRESS,
     id,
     status,
+  };
+};
+
+//-----------------//
+//ThunkCreators
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    getUsers(currentPage, pageSize).then((data) => {
+      dispatch(setIsFetching(false));
+      dispatch(setTotalPages(data.totalCount, pageSize));
+      dispatch(setUsers(data.items));
+    });
+  };
+};
+
+export const setCurrentPageOnClick = (newCurrentPage) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    dispatch(setCurrentPage(newCurrentPage));
+    getUsers(newCurrentPage).then((data) => {
+      dispatch(setIsFetching(false));
+      dispatch(setUsers(data.items));
+    });
   };
 };
 

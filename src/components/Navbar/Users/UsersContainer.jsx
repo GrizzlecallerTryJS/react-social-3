@@ -8,6 +8,8 @@ import {
   setUsers,
   setFollowStatus,
   setFollowingInProgress,
+  getUsersThunkCreator,
+  setCurrentPageOnClick,
 } from "../../../redux/usersPageReducer";
 
 let mapStateToProps = (state) => {
@@ -52,6 +54,8 @@ let acObject = {
   setIsFetching,
   setFollowStatus,
   setFollowingInProgress,
+  getUsersThunkCreator,
+  setCurrentPageOnClick,
 };
 
 export default connect(mapStateToProps, acObject)(Users);
