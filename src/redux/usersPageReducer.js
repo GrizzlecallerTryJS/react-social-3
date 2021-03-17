@@ -14,7 +14,6 @@ const initState = {
   currentPage: 1,
   totalPages: [1, 2, 3],
   isFetching: false,
-  forReload: 0,
   followingInProgress: [],
 };
 
@@ -75,6 +74,9 @@ const usersPageReducer = (state = initState, action) => {
 
   return stateCopy;
 };
+
+//-----------------//
+//ActionCreators
 
 export const setUsers = (users) => {
   return {
@@ -146,11 +148,12 @@ export const setCurrentPageOnClick = (newCurrentPage) => {
   };
 };
 
+//в UserItem приходит актуальный `followed` и оттуда диспатчится противоположное значение
+
 export const setFollowStatusThunkCreator = (id, status) => {
   return (dispatch) => {
     dispatch(setFollowingInProgress(id, true));
     userAPI.setFollowStatus(id, status).then((data) => {
-      debugger;
       if (data.resultCode === 0) {
         dispatch(setFollowStatus(id, status));
         dispatch(setFollowingInProgress(id, false));
