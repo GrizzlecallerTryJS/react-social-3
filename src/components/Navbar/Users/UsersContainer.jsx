@@ -9,6 +9,7 @@ import {
   setCurrentPageOnClick,
   setFollowStatusThunkCreator,
 } from "../../../redux/usersPageReducer";
+import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state) => {
   return {
@@ -51,4 +52,4 @@ let acObject = {
   setFollowStatusThunkCreator,
 };
 
-export default connect(mapStateToProps, acObject)(Users);
+export default connect(mapStateToProps, acObject)(withAuthRedirect(Users));

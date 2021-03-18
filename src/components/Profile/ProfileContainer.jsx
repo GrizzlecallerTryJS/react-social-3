@@ -8,13 +8,13 @@ import {
 } from "../../redux/profilePageReducer";
 
 import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state) => {
   return {
     posts: state.profilePageReducer.posts,
     newPostText: state.profilePageReducer.newPostText,
     profile: state.profilePageReducer.profile,
-    isAuth: state.authReducer.isAuth,
   };
 };
 
@@ -24,6 +24,6 @@ let acObject = {
   setUserProfile,
 };
 
-let profileWithRouter = withRouter(Profile);
+let profileWithRouter = withRouter(withAuthRedirect(Profile));
 
 export default connect(mapStateToProps, acObject)(profileWithRouter);
