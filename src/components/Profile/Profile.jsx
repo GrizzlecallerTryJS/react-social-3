@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
@@ -17,6 +18,9 @@ class Profile extends React.Component {
   }
 
   render() {
+    if (!this.props.isAuth) {
+      return <Redirect to={"/login"} />;
+    }
     return (
       <div className={style.content}>
         <div className={style.profileInfo}>
