@@ -10,19 +10,12 @@ import Settings from "./components/Navbar/Settings/Settings";
 import UsersContainer from "./components/Navbar/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 const App = (props) => {
-  /*  const ProfileComponent = () => {
-    return <Profile state={props.state} />;
-  };*/
-
   const ProfileComponent = () => {
     return <ProfileContainer />;
   };
-
-  /*const MessagesComponent = () => {
-    return <Messages state={props.state} />;
-  };*/
 
   const MessagesComponent = () => {
     return <Messages />;
@@ -54,6 +47,7 @@ const App = (props) => {
       <Route path="/music" render={MusicComponent} />
       <Route path="/settings" render={SettingsComponent} />
       <Route path="/users" render={UsersComponent} />
+      <Route path="/login" render={Login} />
     </div>
   );
 };

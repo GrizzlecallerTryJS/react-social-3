@@ -14,6 +14,7 @@ let mapStateToProps = (state) => {
     posts: state.profilePageReducer.posts,
     newPostText: state.profilePageReducer.newPostText,
     profile: state.profilePageReducer.profile,
+    isAuth: state.authReducer.isAuth,
   };
 };
 
