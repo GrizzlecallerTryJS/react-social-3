@@ -9,6 +9,7 @@ import {
 
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
   return {
@@ -24,6 +25,8 @@ let acObject = {
   setUserProfile,
 };
 
-let profileWithRouter = withRouter(withAuthRedirect(Profile));
-
-export default connect(mapStateToProps, acObject)(profileWithRouter);
+export default compose(
+  connect(mapStateToProps, acObject),
+  withRouter,
+  withAuthRedirect
+)(Profile);
