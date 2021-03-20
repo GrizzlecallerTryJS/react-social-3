@@ -3,6 +3,7 @@ import style from "./ProfileInfo.module.css";
 import defaultAvatar from "../../../assets/images/defaultAvatar.jpg";
 import wideImage from "../../../assets/images/wideImage.jpg";
 import ProfileInfoContacts from "./ProfileInfoContacts";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
   return (
@@ -23,6 +24,7 @@ const ProfileInfo = (props) => {
           <ProfileInfoContacts info={props.profileInfo.contacts} />
           {props.profileInfo.lookingForAJob}
           {props.profileInfo.lookingForAJobDescription}
+          <ProfileStatus profileStatus="balblalba43" />
         </div>
       </div>
     </div>
