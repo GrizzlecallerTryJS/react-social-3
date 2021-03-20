@@ -3,7 +3,6 @@ import style from "./Users.module.css";
 import PaginationComponent from "./UserItemComponent/Pagination/PaginationComponent";
 import UserItemComponent from "./UserItemComponent/UserItemComponent";
 import Preloader from "../../../assets/preloader/Preloader";
-import { setCurrentPageOnClick } from "../../../redux/usersPageReducer";
 
 class Users extends React.Component {
   componentDidMount() {
