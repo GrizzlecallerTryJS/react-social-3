@@ -44,7 +44,7 @@ class ProfileStatus extends React.Component {
             <textarea
               onBlur={this.deactivateEditMode}
               autoFocus={true}
-              value="this.props.profileStatus edit"
+              value="user status is empty edit"
             ></textarea>
           </div>
         );
@@ -52,7 +52,7 @@ class ProfileStatus extends React.Component {
         return (
           <div>
             <div onDoubleClick={this.activateEditMode}>
-              {`this.props.profileStatus`}
+              {`user status is empty`}
             </div>
           </div>
         );
