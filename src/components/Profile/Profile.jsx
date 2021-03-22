@@ -14,6 +14,7 @@ class Profile extends React.Component {
     }
 
     this.props.setUserProfile(userID);
+    this.props.getUserProfileText(userID);
   }
 
   render() {

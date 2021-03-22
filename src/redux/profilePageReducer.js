@@ -5,6 +5,7 @@ import userAPI from "../api/api";
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const SET_PROFILE = "SET_PROFILE";
+const SET_PROFILE_STATUS_TEXT = "SET_PROFILE_STATUS_TEXT";
 
 const initState = {
   posts: [
@@ -32,6 +33,7 @@ const initState = {
     },
     lookingForAJob: true,
     lookingForAJobDescription: null,
+    profileStatusText: "blablabla0340348",
   },
 };
 
@@ -62,12 +64,18 @@ const profilePageReducer = (state = initState, action) => {
     stateCopy.profile = { ...profile, contacts: profile.contacts };
   };
 
+  let _setProfileStatusText = (text) => {
+    stateCopy.profile.profileStatusText = text;
+  };
+
   if (action.type === ADD_POST) {
     _addPost();
   } else if (action.type === UPDATE_NEW_POST_TEXT) {
     _updateNewPostText(action.text);
   } else if (action.type === SET_PROFILE) {
     _setProfile(action.profile);
+  } else if (action.type === SET_PROFILE_STATUS_TEXT) {
+    _setProfileStatusText(action.text);
   }
 
   return stateCopy;
@@ -93,6 +101,13 @@ export const setProfile = (profile) => {
   };
 };
 
+export const setProfileStatusText = (text) => {
+  return {
+    type: SET_PROFILE_STATUS_TEXT,
+    text: text,
+  };
+};
+
 export default profilePageReducer;
 
 export const setUserProfile = (userID) => {
@@ -100,4 +115,12 @@ export const setUserProfile = (userID) => {
     userAPI.getUserProfile(userID).then((data) => {
       dispatch(setProfile(data));
     });
+};
+
+export const getUserProfileText = (userID) => {
+  return (dispatch) => {
+    userAPI.getUserProfileStatus(userID).then((data) => {
+      dispatch(setProfileStatusText(data));
+    });
+  };
 };
