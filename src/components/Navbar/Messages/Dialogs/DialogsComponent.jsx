@@ -7,6 +7,12 @@ import SendMessageComponent from "./SendMessageComponent/SendMessageComponent";
 //TODO: -сделать отображение аватарки для юзера
 
 const DialogsComponent = (props) => {
+  let propsFor_SendMessageComponent = {
+    newMessageText: props.state.newMessageText,
+    sendMessage: props.sendMessage,
+    onMessageChange: props.onMessageChange,
+  };
+
   return (
     <div className={style.main}>
       <div className={style.name}>
@@ -16,11 +22,7 @@ const DialogsComponent = (props) => {
         <MessagesComponent message={props.state.messages} />
       </div>
       <div className={style.addMessage}>
-        <SendMessageComponent
-          newMessageText={props.state.newMessageText}
-          sendMessage={props.sendMessage}
-          onMessageChange={props.onMessageChange}
-        />
+        <SendMessageComponent {...propsFor_SendMessageComponent} />
       </div>
     </div>
   );
