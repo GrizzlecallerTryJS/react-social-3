@@ -15,25 +15,48 @@ class ProfileStatus extends React.Component {
       changeProfileStatus: false,
     });
   };
+
   render() {
-    if (this.state.changeProfileStatus) {
-      return (
-        <div>
-          <textarea
-            onBlur={this.deactivateEditMode}
-            autoFocus={true}
-            value={this.props.profileStatus}
-          ></textarea>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div onDoubleClick={this.activateEditMode}>
-            {this.props.profileStatus}
+    if (this.props.profileStatus) {
+      if (this.state.changeProfileStatus) {
+        return (
+          <div>
+            <textarea
+              onBlur={this.deactivateEditMode}
+              autoFocus={true}
+              value={this.props.profileStatus}
+            ></textarea>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div>
+            <div onDoubleClick={this.activateEditMode}>
+              {this.props.profileStatus}
+            </div>
+          </div>
+        );
+      }
+    } else {
+      if (this.state.changeProfileStatus) {
+        return (
+          <div>
+            <textarea
+              onBlur={this.deactivateEditMode}
+              autoFocus={true}
+              value="this.props.profileStatus edit"
+            ></textarea>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <div onDoubleClick={this.activateEditMode}>
+              {`this.props.profileStatus`}
+            </div>
+          </div>
+        );
+      }
     }
   }
 }

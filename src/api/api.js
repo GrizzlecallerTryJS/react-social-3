@@ -27,6 +27,12 @@ const userAPI = {
     return instance.get(`profile/${userID}`).then((response) => response.data);
   },
 
+  getUserProfileStatus(userID) {
+    return instance
+      .get(`/profile/status/${userID}`)
+      .then((response) => response.data);
+  },
+
   authMe() {
     return instance.get(`auth/me`).then((response) => response.data);
   },

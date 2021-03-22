@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
           <ProfileInfoContacts info={props.profileInfo.contacts} />
           {props.profileInfo.lookingForAJob}
           {props.profileInfo.lookingForAJobDescription}
-          <ProfileStatus profileStatus="balblalba43" />
+          <ProfileStatus profileStatus={props.profileInfo.profileStatusText} />
         </div>
       </div>
     </div>

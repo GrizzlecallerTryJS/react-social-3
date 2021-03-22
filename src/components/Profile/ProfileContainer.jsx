@@ -4,6 +4,7 @@ import {
   addPost,
   onPostChange,
   setUserProfile,
+  getUserProfileText,
 } from "../../redux/profilePageReducer";
 
 import { withRouter } from "react-router-dom";
@@ -22,6 +23,7 @@ let acObject = {
   addPost,
   onPostChange,
   setUserProfile,
+  getUserProfileText,
 };
 
 export default compose(
