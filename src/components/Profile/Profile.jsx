@@ -17,13 +17,6 @@ class Profile extends React.Component {
     this.props.getUserProfileText(userID);
   }
 
-  propsFor_MyPostsComponent = {
-    newPostText: this.props.newPostText,
-    addPost: this.props.addPost,
-    onPostChange: this.props.onPostChange,
-    posts: this.props.posts,
-  };
-
   render() {
     return (
       <div className={style.content}>
@@ -31,7 +24,12 @@ class Profile extends React.Component {
           <ProfileInfo profileInfo={this.props.profile} />
         </div>
         <div className={style.myPosts}>
-          <MyPostsComponent {...this.propsFor_MyPostsComponent} />
+          <MyPostsComponent
+            newPostText={this.props.newPostText}
+            addPost={this.props.addPost}
+            onPostChange={this.props.onPostChange}
+            posts={this.props.posts}
+          />
         </div>
       </div>
     );
