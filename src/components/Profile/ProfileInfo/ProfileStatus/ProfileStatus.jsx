@@ -3,6 +3,7 @@ import React from "react";
 class ProfileStatus extends React.Component {
   state = {
     changeProfileStatus: false,
+    newStatusText: this.props.profileStatus,
   };
 
   activateEditMode = () => {
@@ -14,6 +15,13 @@ class ProfileStatus extends React.Component {
     this.setState({
       changeProfileStatus: false,
     });
+    this.props.setUserProfileStatusText(this.state.newStatusText);
+  };
+
+  onChange = (e) => {
+    this.setState({
+      newStatusText: e.currentTarget.value,
+    });
   };
 
   render() {
@@ -22,9 +30,10 @@ class ProfileStatus extends React.Component {
         return (
           <div>
             <textarea
+              onChange={this.onChange}
               onBlur={this.deactivateEditMode}
               autoFocus={true}
-              value={this.props.profileStatus}
+              value={this.state.newStatusText}
             ></textarea>
           </div>
         );
@@ -44,6 +53,7 @@ class ProfileStatus extends React.Component {
             <textarea
               onBlur={this.deactivateEditMode}
               autoFocus={true}
+              onChange={this.onChange}
               value="user status is empty edit"
             ></textarea>
           </div>

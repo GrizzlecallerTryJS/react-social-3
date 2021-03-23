@@ -4,7 +4,8 @@ import {
   addPost,
   onPostChange,
   setUserProfile,
-  getUserProfileText,
+  getUserProfileStatusText,
+  setUserProfileStatusText,
 } from "../../redux/profilePageReducer";
 
 import { withRouter } from "react-router-dom";
@@ -16,6 +17,7 @@ let mapStateToProps = (state) => {
     posts: state.profilePageReducer.posts,
     newPostText: state.profilePageReducer.newPostText,
     profile: state.profilePageReducer.profile,
+    profileStatusText: state.profilePageReducer.profileStatusText,
   };
 };
 
@@ -23,7 +25,8 @@ let acObject = {
   addPost,
   onPostChange,
   setUserProfile,
-  getUserProfileText,
+  getUserProfileStatusText,
+  setUserProfileStatusText,
 };
 
 export default compose(

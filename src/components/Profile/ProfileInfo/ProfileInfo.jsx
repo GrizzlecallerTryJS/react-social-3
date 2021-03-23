@@ -4,8 +4,13 @@ import defaultAvatar from "../../../assets/images/defaultAvatar.jpg";
 import wideImage from "../../../assets/images/wideImage.jpg";
 import ProfileInfoContacts from "./ProfileInfoContacts";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import Preloader from "../../../assets/preloader/Preloader";
 
 const ProfileInfo = (props) => {
+  if (!props.profileInfo) {
+    return <Preloader />;
+  }
+
   return (
     <div className={style.main}>
       <div className={style.wideImage}>
@@ -24,7 +29,10 @@ const ProfileInfo = (props) => {
           <ProfileInfoContacts info={props.profileInfo.contacts} />
           {props.profileInfo.lookingForAJob}
           {props.profileInfo.lookingForAJobDescription}
-          <ProfileStatus profileStatus={props.profileInfo.profileStatusText} />
+          <ProfileStatus
+            profileStatus={props.profileStatusText}
+            setUserProfileStatusText={props.setUserProfileStatusText}
+          />
         </div>
       </div>
     </div>

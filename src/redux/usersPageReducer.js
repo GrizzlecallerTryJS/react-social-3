@@ -1,4 +1,4 @@
-import userAPI from "../api/api";
+import { userAPI } from "../api/api";
 
 const SET_USERS = "SET_USERS";
 const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
