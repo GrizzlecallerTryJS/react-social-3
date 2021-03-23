@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
+import { setUserProfileStatusText } from "../../redux/profilePageReducer";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -14,14 +15,18 @@ class Profile extends React.Component {
     }
 
     this.props.setUserProfile(userID);
-    this.props.getUserProfileText(userID);
+    this.props.getUserProfileStatusText(userID);
   }
 
   render() {
     return (
       <div className={style.content}>
         <div className={style.profileInfo}>
-          <ProfileInfo profileInfo={this.props.profile} />
+          <ProfileInfo
+            profileInfo={this.props.profile}
+            profileStatusText={this.props.profileStatusText}
+            setUserProfileStatusText={this.props.setUserProfileStatusText}
+          />
         </div>
         <div className={style.myPosts}>
           <MyPostsComponent
@@ -37,9 +42,3 @@ class Profile extends React.Component {
 }
 
 export default Profile;
-
-/*
-newPostText={this.props.newPostText}
-addPost={this.props.addPost}
-onPostChange={this.props.onPostChange}
-posts={this.props.posts}*/
