@@ -17,6 +17,22 @@ class Profile extends React.Component {
     this.props.getUserProfileStatusText(userID);
   }
 
+  /*  propsObj = {
+    newPostText: this.props.newPostText,
+    addPost: this.props.addPost,
+    onPostChange: this.props.onPostChange,
+    posts: this.props.posts,
+  };*/
+
+  /*componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps !== this.props) {
+      this.propsObj.addPost = this.props.addPost;
+      this.propsObj.newPostText = this.props.newPostText;
+      this.propsObj.onPostChange = this.props.onPostChange;
+      this.propsObj.posts = this.props.posts;
+    }
+  }*/
+
   render() {
     return (
       <div className={style.content}>

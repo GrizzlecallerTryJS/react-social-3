@@ -6,6 +6,14 @@ class ProfileStatus extends React.Component {
     newStatusText: this.props.profileStatus,
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps !== this.props) {
+      this.setState({
+        newStatusText: this.props.profileStatus,
+      });
+    }
+  }
+
   activateEditMode = () => {
     this.setState({
       changeProfileStatus: true,
