@@ -1,7 +1,6 @@
 import defaultImage from "../assets/images/defaultImage.png";
 import defaultAvatar from "../assets/images/defaultAvatar.jpg";
 import { profileAPI } from "../api/api";
-import { debug } from "prettier/doc";
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
