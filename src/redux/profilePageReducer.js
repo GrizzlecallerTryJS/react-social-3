@@ -1,6 +1,7 @@
 import defaultImage from "../assets/images/defaultImage.png";
 import defaultAvatar from "../assets/images/defaultAvatar.jpg";
 import { profileAPI } from "../api/api";
+import { debug } from "prettier/doc";
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -34,7 +35,7 @@ const initState = {
     lookingForAJob: true,
     lookingForAJobDescription: null,
   },
-  profileStatusText: "has no status",
+  profileStatusText: "",
 };
 
 const profilePageReducer = (state = initState, action) => {
@@ -127,8 +128,8 @@ export const getUserProfileStatusText = (userID) => {
 
 export const setUserProfileStatusText = (text) => {
   return (dispatch) => {
-    profileAPI.setUserProfileStatus(text).then((data) => {
-      if (data.resultCode === 0) {
+    profileAPI.setUserProfileStatus(text).then((response) => {
+      if (response.data.resultCode === 0) {
         dispatch(setProfileStatusText(text));
       }
     });

@@ -9,7 +9,7 @@ import {
 } from "../../redux/profilePageReducer";
 
 import { withRouter } from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+/*import { withAuthRedirect } from "../../hoc/withAuthRedirect";*/
 import { compose } from "redux";
 
 let mapStateToProps = (state) => {
@@ -29,8 +29,4 @@ let acObject = {
   setUserProfileStatusText,
 };
 
-export default compose(
-  connect(mapStateToProps, acObject),
-  withRouter,
-  withAuthRedirect
-)(Profile);
+export default compose(connect(mapStateToProps, acObject), withRouter)(Profile);
