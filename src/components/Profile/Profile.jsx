@@ -10,7 +10,7 @@ class Profile extends React.Component {
     if (this.props.match.params.userID) {
       userID = this.props.match.params.userID;
     } else {
-      userID = 2;
+      userID = 8184;
     }
 
     this.props.setUserProfile(userID);

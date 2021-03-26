@@ -37,6 +37,10 @@ const App = (props) => {
     return <UsersContainer />;
   };
 
+  const LoginComponent = (props) => {
+    return <Login />;
+  };
+
   return (
     <div className={style.app_wrapper}>
       <HeaderContainer />
@@ -47,7 +51,7 @@ const App = (props) => {
       <Route path="/music" render={MusicComponent} />
       <Route path="/settings" render={SettingsComponent} />
       <Route path="/users" render={UsersComponent} />
-      <Route path="/login" render={Login} />
+      <Route path="/login" render={LoginComponent} />
     </div>
   );
 };

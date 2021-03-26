@@ -31,16 +31,22 @@ export const profileAPI = {
 
   getUserProfileStatus(userID) {
     return instance
-      .get(`/profile/status/${userID}`)
+      .get(`profile/status/${userID}`)
       .then((response) => response.data);
   },
   setUserProfileStatus(text) {
-    return instance.put(`/profile/status`, { status: text });
+    return instance.put(`profile/status`, { status: text });
   },
 };
 
 export const authAPI = {
   authMe() {
     return instance.get(`auth/me`).then((response) => response.data);
+  },
+
+  authLogin(email, password) {
+    return instance
+      .post(`auth/login`, { email: email, password: password })
+      .then((response) => response.data);
   },
 };
