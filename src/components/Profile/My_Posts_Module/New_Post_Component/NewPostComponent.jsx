@@ -1,8 +1,9 @@
 import React from "react";
+import NewPostForm from "./NewPostForm";
 
 const NewPostComponent = (props) => {
-  let addPostButtonAction = () => {
-    props.addPost();
+  let addPostButtonAction = (text) => {
+    props.addPost(text);
   };
 
   let onPostChange = (e) => {
@@ -13,8 +14,13 @@ const NewPostComponent = (props) => {
   return (
     <div>
       <div>New Post</div>
-      <textarea onChange={onPostChange} value={props.newPostText} />
-      <button onClick={addPostButtonAction}>Add post</button>
+      {/*<textarea onChange={onPostChange} value={props.newPostText} />
+      <button onClick={addPostButtonAction}>Add post</button>*/}
+
+      <NewPostForm
+        addPostButtonAction={addPostButtonAction}
+        newPostText={props.newPostText}
+      />
     </div>
   );
 };

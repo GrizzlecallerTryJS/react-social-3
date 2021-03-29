@@ -40,10 +40,10 @@ const initState = {
 const profilePageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
 
-  let _addPost = () => {
+  let _addPost = (text) => {
     let newPost = {
       id: stateCopy.posts.length + 1,
-      message: stateCopy.newPostText,
+      message: text,
       image: defaultImage,
     };
 
@@ -69,7 +69,7 @@ const profilePageReducer = (state = initState, action) => {
   };
 
   if (action.type === ADD_POST) {
-    _addPost();
+    _addPost(action.text);
   } else if (action.type === UPDATE_NEW_POST_TEXT) {
     _updateNewPostText(action.text);
   } else if (action.type === SET_PROFILE) {
@@ -81,9 +81,10 @@ const profilePageReducer = (state = initState, action) => {
   return stateCopy;
 };
 
-export const addPost = () => {
+export const addPost = (text) => {
   return {
     type: ADD_POST,
+    text: text.newPost,
   };
 };
 
