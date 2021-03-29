@@ -3,16 +3,16 @@ import { useForm } from "react-hook-form";
 
 const LoginForm = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => props.setAuthLogin(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label htmlFor="login"></label>
+        <label htmlFor="email"></label>
         <input
-          placeholder="login"
+          placeholder="email"
           type="text"
-          name="login"
+          name="email"
           ref={register({ required: true })}
         />
         {errors.login && <p>Login is required</p>}

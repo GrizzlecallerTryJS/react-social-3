@@ -5,7 +5,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <LoginComponent />
+        <LoginComponent {...this.props} />
       </div>
     );
   }

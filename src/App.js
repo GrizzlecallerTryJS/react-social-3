@@ -10,7 +10,7 @@ import Settings from "./components/Navbar/Settings/Settings";
 import UsersContainer from "./components/Navbar/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import LoginContainer from "./components/Login/LoginContainer";
 
 const App = (props) => {
   const ProfileComponent = () => {
@@ -38,7 +38,7 @@ const App = (props) => {
   };
 
   const LoginComponent = (props) => {
-    return <Login />;
+    return <LoginContainer />;
   };
 
   return (
