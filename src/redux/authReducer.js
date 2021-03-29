@@ -45,7 +45,6 @@ export const setAuthMe = () => {
 };
 
 export const setAuthLogin = (data) => {
-  debugger;
   return (dispatch) => {
     authAPI.authLogin(data.email, data.password).then((data) => {
       if (data.resultCode === 0) {

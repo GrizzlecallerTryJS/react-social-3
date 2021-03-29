@@ -45,7 +45,6 @@ export const authAPI = {
   },
 
   authLogin(email, password) {
-    debugger;
     return instance
       .post(`auth/login`, { email: email, password: password })
       .then((response) => response.data);
