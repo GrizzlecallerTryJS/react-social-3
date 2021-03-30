@@ -20,10 +20,10 @@ const initState = {
 const messagePageReducer = (state = initState, action) => {
   let stateCopy = { ...state };
 
-  let _addMessage = () => {
+  let _addMessage = (message) => {
     let newMessage = {
       id: stateCopy.messages.length + 1,
-      message: stateCopy.newMessageText,
+      message: message,
     };
 
     stateCopy.messages = [...state.messages, newMessage];
@@ -40,7 +40,7 @@ const messagePageReducer = (state = initState, action) => {
   };
 
   if (action.type === ADD_MESSAGE) {
-    _addMessage();
+    _addMessage(action.message);
   } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
     _updateNewMessageText(action.text);
   }
@@ -48,13 +48,14 @@ const messagePageReducer = (state = initState, action) => {
   return stateCopy;
 };
 
-export const sendMessageAC = () => {
+export const sendMessage = (message) => {
   return {
     type: ADD_MESSAGE,
+    message: message.sendMessageForm,
   };
 };
 
-export const onMessageChangeAC = (text) => {
+export const onMessageChange = (text) => {
   return {
     type: UPDATE_NEW_MESSAGE_TEXT,
     text: text,
