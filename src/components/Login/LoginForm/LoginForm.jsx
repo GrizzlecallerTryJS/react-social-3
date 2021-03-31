@@ -2,8 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = (props) => {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => props.setAuthLogin(data);
+  const { register, handleSubmit, errors, reset } = useForm({
+    mode: "onSubmit",
+  });
+  const onSubmit = (data) => {
+    props.setAuthLogin(data);
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -15,7 +20,6 @@ const LoginForm = (props) => {
           name="email"
           ref={register({ required: true })}
         />
-        {errors.login && <p>Login is required</p>}
       </div>
       <div>
         <label htmlFor="password"></label>
@@ -25,7 +29,12 @@ const LoginForm = (props) => {
           name="password"
           ref={register({ required: true })}
         />
-        {errors.password && <p>Password is required</p>}
+        <div>
+          <div>{errors.email?.type === "required" && "Email is required"}</div>
+          <div>
+            {errors.password?.type === "required" && "Password is required"}
+          </div>
+        </div>
       </div>
 
       <div>

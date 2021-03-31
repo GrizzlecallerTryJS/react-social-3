@@ -29,7 +29,4 @@ const acObject = {
   onMessageChange,
 };
 
-export default compose(
-  withAuthRedirect,
-  connect(mapStateToProps, acObject)
-)(DialogsComponent);
+export default compose(connect(mapStateToProps, acObject))(DialogsComponent);
