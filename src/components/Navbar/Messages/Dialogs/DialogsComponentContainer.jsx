@@ -4,7 +4,6 @@ import {
   sendMessage,
 } from "../../../../redux/messagePageReducer";
 import { connect } from "react-redux";
-import { withAuthRedirect } from "../../../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 const mapStateToProps = (state) => {

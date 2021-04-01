@@ -1,14 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-/*import {
-  maxLengthCreator,
-  minLengthCreator,
-  required,
-} from "../../../../../common/Validate";*/
-/*import { TextArea } from "../../../../../common/FormControl";*/
-
-/*const maxLength255 = maxLengthCreator(255);
-const minLength10 = minLengthCreator(10);*/
 
 const SendMessageForm = (props) => {
   const { register, handleSubmit, reset, errors } = useForm({

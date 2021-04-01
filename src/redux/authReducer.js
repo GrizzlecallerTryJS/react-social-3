@@ -63,17 +63,18 @@ export const setAuthLogin = (data) => {
   return (dispatch) => {
     authAPI.authLogin(data.email, data.password).then((data) => {
       if (data.resultCode === 0) {
-        setAuthMe();
+        dispatch(setAuthMe());
       }
     });
   };
 };
 
-export const setAuthLogout = (userIsAuthState) => {
+export const setAuthLogout = (userNewIsAuthState) => {
   return (dispatch) => {
     authAPI.authLogout().then((data) => {
       if (data.resultCode === 0) {
-        dispatch(setIsAuth(userIsAuthState));
+        dispatch(setIsAuth(userNewIsAuthState));
+        dispatch(setAuthUser(initState.user));
       }
     });
   };
