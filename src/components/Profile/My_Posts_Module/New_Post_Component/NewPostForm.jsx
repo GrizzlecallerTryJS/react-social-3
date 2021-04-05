@@ -2,13 +2,21 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const NewPostForm = (props) => {
-  const { register, handleSubmit, reset, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     mode: "onSubmit",
   });
   const onSubmit = (data) => {
     props.addPostButtonAction(data);
+    console.log(data);
     reset();
   };
+
+  const maxLength255 = 255;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -16,12 +24,12 @@ const NewPostForm = (props) => {
         <label htmlFor="newPost"></label>
         <textarea
           placeholder="type here"
-          name="newPost"
-          ref={register({ maxLength: 255 })}
+          {...register("newPost", { required: true, maxLength: 255 })}
         />
       </div>
       <div>
-        {errors.newPost?.type === "maxLength" && "Max Length is 255 symbols"}
+        {errors.newPost?.type === "maxLength" &&
+          `Max Length is ${maxLength255} symbols`}
       </div>
       <div>
         <input type="submit" />

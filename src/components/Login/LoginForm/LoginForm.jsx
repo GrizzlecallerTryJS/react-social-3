@@ -2,7 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = (props) => {
-  const { register, handleSubmit, errors, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     mode: "onSubmit",
   });
   const onSubmit = (data) => {
@@ -17,8 +22,7 @@ const LoginForm = (props) => {
         <input
           placeholder="email"
           type="text"
-          name="email"
-          ref={register({ required: true })}
+          {...register("email", { required: true })}
         />
       </div>
       <div>
@@ -26,8 +30,7 @@ const LoginForm = (props) => {
         <input
           placeholder="password"
           type="password"
-          name="password"
-          ref={register({ required: true })}
+          {...register("password", { required: true })}
         />
         <div>
           <div>{errors.email?.type === "required" && "Email is required"}</div>
