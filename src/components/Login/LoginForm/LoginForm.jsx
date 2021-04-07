@@ -5,13 +5,17 @@ const LoginForm = (props) => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
     reset,
   } = useForm({
     mode: "onSubmit",
   });
-  const onSubmit = (data) => {
-    props.setAuthLogin(data);
+
+  // const auth = (data) => new Promise(() => props.setAuthLogin(data));
+
+  const onSubmit = async (data) => {
+    await props.setAuthLogin(data);
     reset();
   };
 

@@ -8,7 +8,7 @@ const LoginComponent = (props) => {
       <div>
         <h1>Login Form</h1>
       </div>
-      <LoginForm setAuthLogin={props.setAuthLogin} />
+      <LoginForm setAuthLogin={props.setAuthLogin} error={props.error} />
     </div>
   );
 };
