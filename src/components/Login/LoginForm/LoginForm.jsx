@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = (props) => {
-  debugger;
   const {
     register,
     handleSubmit,
@@ -13,15 +12,14 @@ const LoginForm = (props) => {
     mode: "onSubmit",
   });
 
-  const onSubmit = async (data) => {
-    await props.setAuthLogin(data).then(() => {
-      if (props.serverError.length > 0) {
-        authError();
-      }
+  const onSubmit = (data) => {
+    let promise = props.setAuthLogin(data);
+    debugger;
+    promise.then(() => {
+      authError();
+      console.log(errors.serverError.message);
     });
-
     reset();
-    console.log(errors.serverError.message);
   };
 
   const authError = () => {

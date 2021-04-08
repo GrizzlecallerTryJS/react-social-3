@@ -66,22 +66,20 @@ const setServerError = (error) => {
 export default authReducer;
 
 export const setAuthMe = () => (dispatch) => {
-  authAPI.authMe().then((data) => {
+  return authAPI.authMe().then((data) => {
     if (data.resultCode === 0) {
       dispatch(setAuthUser(data.data));
       dispatch(setIsAuth(true));
     }
   });
-  return console.log("blablalba");
 };
 
 export const setAuthLogin = (data) => (dispatch) => {
-  authAPI.authLogin(data.email, data.password).then((data) => {
+  return authAPI.authLogin(data.email, data.password).then((data) => {
     if (data.resultCode === 0) {
       dispatch(setAuthMe());
     } else if (data.resultCode === 1) {
       dispatch(setServerError(data.messages));
-      return data.messages;
     }
   });
 };
