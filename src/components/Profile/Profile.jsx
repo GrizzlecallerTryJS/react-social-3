@@ -5,13 +5,16 @@ import MyPostsComponent from "./My_Posts_Module/MyPostsComponent";
 
 class Profile extends React.Component {
   componentDidMount() {
-    let userID;
+    let userID = this.props.match.params.userID;
+    if (!userID) {
+      userID = this.props.profile.userId;
+    }
 
-    if (this.props.match.params.userID) {
+    /*if (this.props.match.params.userID) {
       userID = this.props.match.params.userID;
     } else {
       userID = 8184;
-    }
+    }*/
 
     this.props.setUserProfile(userID);
     this.props.getUserProfileStatusText(userID);
