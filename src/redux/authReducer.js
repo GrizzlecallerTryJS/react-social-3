@@ -11,7 +11,7 @@ let initState = {
     email: null,
   },
   isAuth: false,
-  error: "",
+  serverError: "",
 };
 
 const authReducer = (state = initState, action) => {
@@ -25,8 +25,9 @@ const authReducer = (state = initState, action) => {
     stateCopy.isAuth = isAuth;
   };
 
-  let _setError = (error) => {
-    stateCopy.error = error;
+  let _setServerError = (error) => {
+    debugger;
+    stateCopy.serverError = error.join();
   };
 
   if (action.type === SET_AUTH_USER) {
@@ -34,7 +35,8 @@ const authReducer = (state = initState, action) => {
   } else if (action.type === SET_IS_AUTH) {
     _setIsAuth(action.isAuth);
   } else if (action.type === SET_ERROR) {
-    _setError(action.error);
+    debugger;
+    _setServerError(action.error);
   }
 
   return stateCopy;
@@ -54,7 +56,7 @@ export const setIsAuth = (isAuth) => {
   };
 };
 
-const setError = (error) => {
+const setServerError = (error) => {
   return {
     type: SET_ERROR,
     error: error,
@@ -63,27 +65,25 @@ const setError = (error) => {
 
 export default authReducer;
 
-export const setAuthMe = () => {
-  return (dispatch) => {
-    authAPI.authMe().then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(setAuthUser(data.data));
-        dispatch(setIsAuth(true));
-      }
-    });
-  };
+export const setAuthMe = () => (dispatch) => {
+  authAPI.authMe().then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(setAuthUser(data.data));
+      dispatch(setIsAuth(true));
+    }
+  });
+  return console.log("blablalba");
 };
 
-export const setAuthLogin = (data) => {
-  return (dispatch) => {
-    authAPI.authLogin(data.email, data.password).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(setAuthMe());
-      } else {
-        dispatch(setError(data.messages));
-      }
-    });
-  };
+export const setAuthLogin = (data) => (dispatch) => {
+  authAPI.authLogin(data.email, data.password).then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(setAuthMe());
+    } else if (data.resultCode === 1) {
+      dispatch(setServerError(data.messages));
+      return data.messages;
+    }
+  });
 };
 
 export const setAuthLogout = (userNewIsAuthState) => {

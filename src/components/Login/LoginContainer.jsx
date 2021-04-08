@@ -1,11 +1,11 @@
-import { setAuthLogin } from "./../../redux/authReducer";
+import { setAuthLogin } from "../../redux/authReducer";
 import { connect } from "react-redux";
 import Login from "./Login";
 
 let mapStateToProps = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
-    error: state.authReducer.error,
+    serverError: state.authReducer.serverError,
   };
 };
 
