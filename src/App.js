@@ -2,7 +2,7 @@ import React from "react";
 
 import style from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import Messages from "./components/Navbar/Messages/Messages";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
@@ -11,49 +11,73 @@ import UsersContainer from "./components/Navbar/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { initializeApp } from "./redux/appReducer";
+import Preloader from "./assets/preloader/Preloader";
 
-const App = (props) => {
-  const ProfileComponent = () => {
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+
+  ProfileComponent = (props) => {
     return <ProfileContainer />;
   };
 
-  const MessagesComponent = () => {
+  MessagesComponent = (props) => {
     return <Messages />;
   };
 
-  const NewsComponent = (props) => {
+  NewsComponent = (props) => {
     return <News />;
   };
 
-  const MusicComponent = (props) => {
+  MusicComponent = (props) => {
     return <Music />;
   };
 
-  const SettingsComponent = (props) => {
+  SettingsComponent = (props) => {
     return <Settings />;
   };
 
-  const UsersComponent = (props) => {
+  UsersComponent = (props) => {
     return <UsersContainer />;
   };
 
-  const LoginComponent = (props) => {
+  LoginComponent = (props) => {
     return <LoginContainer />;
   };
 
-  return (
-    <div className={style.app_wrapper}>
-      <HeaderContainer />
-      <Navbar />
-      <Route path="/profile/:userID?" render={ProfileComponent} />
-      <Route exact path="/messages" render={MessagesComponent} />
-      <Route path="/news" render={NewsComponent} />
-      <Route path="/music" render={MusicComponent} />
-      <Route path="/settings" render={SettingsComponent} />
-      <Route path="/users" render={UsersComponent} />
-      <Route path="/login" render={LoginComponent} />
-    </div>
-  );
+  render() {
+    if (!this.props.initializeApp) {
+      return <Preloader />;
+    }
+
+    return (
+      <div className={style.app_wrapper}>
+        <HeaderContainer />
+        <Navbar />
+        <Route path="/profile/:userID?" render={this.ProfileComponent} />
+        <Route exact path="/messages" render={this.MessagesComponent} />
+        <Route path="/news" render={this.NewsComponent} />
+        <Route path="/music" render={this.MusicComponent} />
+        <Route path="/settings" render={this.SettingsComponent} />
+        <Route path="/users" render={this.UsersComponent} />
+        <Route path="/login" render={this.LoginComponent} />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    init: state.appReducer.initializeState,
+  };
 };
 
-export default App;
+const acObject = {
+  initializeApp,
+};
+
+export default compose(withRouter, connect(mapStateToProps, acObject))(App);

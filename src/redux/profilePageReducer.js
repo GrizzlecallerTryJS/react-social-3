@@ -81,6 +81,8 @@ const profilePageReducer = (state = initState, action) => {
   return stateCopy;
 };
 
+export default profilePageReducer;
+
 export const addPost = (text) => {
   return {
     type: ADD_POST,
@@ -108,8 +110,6 @@ export const setProfileStatusText = (text) => {
     text: text,
   };
 };
-
-export default profilePageReducer;
 
 export const setUserProfile = (userID) => {
   return (dispatch) =>

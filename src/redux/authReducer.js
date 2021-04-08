@@ -32,6 +32,8 @@ const authReducer = (state = initState, action) => {
   return stateCopy;
 };
 
+export default authReducer;
+
 export const setAuthUser = (user) => {
   return {
     type: SET_AUTH_USER,
@@ -46,17 +48,13 @@ export const setIsAuth = (isAuth) => {
   };
 };
 
-export default authReducer;
-
-export const setAuthMe = () => {
-  return (dispatch) => {
-    authAPI.authMe().then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(setAuthUser(data.data));
-        dispatch(setIsAuth(true));
-      }
-    });
-  };
+export const setAuthMe = () => (dispatch) => {
+  return authAPI.authMe().then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(setAuthUser(data.data));
+      dispatch(setIsAuth(true));
+    }
+  });
 };
 
 export const setAuthLogin = (data) => {
