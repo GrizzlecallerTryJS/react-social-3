@@ -70,6 +70,10 @@ class App extends React.Component {
   }
 }
 
+//test comment
+
+//test cooment 2
+
 const mapStateToProps = (state) => {
   return {
     init: state.appReducer.initializeState,
