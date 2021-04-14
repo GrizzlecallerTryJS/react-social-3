@@ -80,6 +80,7 @@ export const setAuthLogin = (data) => (dispatch) => {
       dispatch(setAuthMe());
     } else if (data.resultCode === 1) {
       dispatch(setServerError(data.messages));
+      return data.messages;
     }
   });
 };

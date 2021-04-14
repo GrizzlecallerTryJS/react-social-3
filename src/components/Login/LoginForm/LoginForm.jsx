@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = (props) => {
+  debugger;
   const {
     register,
     handleSubmit,
@@ -20,6 +21,7 @@ const LoginForm = (props) => {
       console.log(errors.serverError.message);
     });
     reset();
+    console.log(errors.serverError.message);
   };
 
   const authError = () => {
